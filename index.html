@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lackadaisy Study Club — KAT Revision</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #1a1208;
+  --bg2:      #221a0e;
+  --panel:    #2b1f0f;
+  --panel2:   #342614;
+  --border:   #5c3d1a;
+  --border-lit:#a06828;
+  --amber:    #d4821a;
+  --gold:     #e8b040;
+  --cream:    #f0deb8;
+  --sepia:    #c8a878;
+  --rust:     #c04820;
+  --sage:     #7a9060;
+  --teal:     #3a8878;
+  --dim:      rgba(240,222,184,0.5);
+  --ink:      #0e0a04;
+
+–math:  #4aa0d0;
+–eng:   #c85050;
+–sci:   #60a860;
+–geo:   #3a9898;
+–hist:  #c8782a;
+–comp:  #9060c0;
+–pe:    #c84870;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+body {
+background: var(–bg);
+color: var(–cream);
+font-family: ‘Lato’, sans-serif;
+font-weight: 400;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* Art deco diagonal pattern */
+body::before {
+content:’’;
+position:fixed;inset:0;pointer-events:none;
+background:
+repeating-linear-gradient(45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px),
+repeating-linear-gradient(-45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px);
+z-index:0;
+}
+
+/* Vignette */
+body::after {
+content:’’;
+position:fixed;inset:0;pointer-events:none;
+background: radial-gradient(ellipse at center, transparent 40%, rgba(10,6,2,.7) 100%);
+z-index:1;
+}
+
+/* Floating dust motes */
+#motes{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+.mote{
+position:absolute;
+border-radius:50%;
+background:rgba(232,176,64,.6);
+animation:mote-drift var(–dur,12s) var(–del,0s) ease-in-out infinite;
+opacity:0;
+}
+@keyframes mote-drift{
+0%{transform:translate(0,0);opacity:0;}
+20%{opacity:.6;}
+80%{opacity:.3;}
+100%{transform:translate(var(–dx,20px), var(–dy,-80px));opacity:0;}
+}
+
+.page{max-width:1060px;margin:0 auto;padding:0 16px 50px;position:relative;z-index:3;}
+
+/* ── HEADER ── */
+.header{
+text-align:center;
+padding:32px 0 20px;
+border-bottom:3px solid var(–border);
+margin-bottom:20px;
+position:relative;
+}
+.header-deco{
+display:flex;justify-content:center;align-items:center;gap:0;
+margin-bottom:12px;
+font-size:12px;color:var(–amber);letter-spacing:6px;
+font-family:‘Lato’,sans-serif;font-weight:900;
+text-transform:uppercase;
+}
+.deco-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(–amber),transparent);max-width:180px;}
+
+.title{
+font-family:‘Playfair Display’,serif;
+font-size:clamp(22px,5vw,46px);
+font-weight:900;
+color:var(–gold);
+text-shadow:0 2px 20px rgba(232,176,64,.3), 2px 2px 0 rgba(0,0,0,.6);
+letter-spacing:1px;
+line-height:1.1;
+}
+.title-cat{font-size:clamp(14px,2.5vw,22px);display:block;color:var(–amber);font-style:italic;font-weight:700;margin-top:4px;}
+.subtitle{
+font-size:11px;color:var(–dim);
+margin-top:8px;letter-spacing:3px;
+text-transform:uppercase;font-weight:700;
+}
+.art-deco-border{
+display:flex;align-items:center;justify-content:center;gap:8px;
+margin-top:14px;
+color:var(–amber);font-size:16px;
+}
+.adb-line{width:60px;height:2px;background:var(–amber);}
+
+/* ── COUNTDOWN ── */
+.cdwrap{display:flex;justify-content:center;margin-bottom:18px;}
+.cdbox{
+background:var(–panel);
+border:2px solid var(–border-lit);
+padding:14px 40px;
+text-align:center;
+position:relative;
+box-shadow:0 4px 30px rgba(0,0,0,.5), inset 0 0 30px rgba(212,130,26,.05);
+}
+.cdbox::before,.cdbox::after{
+content:‘◆’;position:absolute;color:var(–amber);font-size:12px;top:50%;transform:translateY(-50%);
+}
+.cdbox::before{left:10px;}
+.cdbox::after{right:10px;}
+.cdnum{
+display:block;
+font-family:‘Playfair Display’,serif;
+font-size:clamp(40px,8vw,64px);
+font-weight:900;
+color:var(–rust);
+text-shadow:2px 2px 0 rgba(0,0,0,.5);
+line-height:1;
+animation:pulse .9s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.cdsub{font-size:10px;color:var(–dim);margin-top:6px;letter-spacing:1px;}
+.cdsub b{color:var(–gold);}
+
+/* ── PLAYER BAR ── */
+.pbar{
+background:var(–panel);border:2px solid var(–border);
+padding:14px 16px;display:flex;align-items:center;gap:14px;
+margin-bottom:14px;flex-wrap:wrap;
+box-shadow:0 2px 20px rgba(0,0,0,.4);
+}
+.avatar{font-size:40px;animation:catbob 3s ease-in-out infinite;flex-shrink:0;}
+@keyframes catbob{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg) translateY(-3px);}}
+.pdetails{flex:1;min-width:180px;}
+.pname{
+font-family:‘Playfair Display’,serif;font-size:11px;
+color:var(–gold);margin-bottom:7px;letter-spacing:1px;font-weight:700;
+}
+.barwrap{
+position:relative;height:18px;
+background:rgba(0,0,0,.4);
+border:2px solid var(–border-lit);
+overflow:hidden;
+}
+.barfill{
+height:100%;
+background:linear-gradient(90deg,var(–rust),var(–amber));
+transition:width .7s ease;position:relative;
+}
+.barfill::after{content:’’;position:absolute;inset:2px 6px auto;height:4px;background:rgba(255,255,255,.15);}
+.bartext{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:8px;color:var(–cream);}
+.xpline{font-size:9px;color:var(–dim);margin-top:5px;}
+.lvbadge{
+font-family:‘Playfair Display’,serif;font-size:13px;font-weight:900;
+background:linear-gradient(135deg,var(–rust),var(–amber));
+color:var(–ink);padding:8px 16px;flex-shrink:0;
+text-align:center;min-width:64px;letter-spacing:1px;
+box-shadow:0 2px 10px rgba(0,0,0,.4);
+}
+
+/* ── SUBJECT BARS ── */
+.sbjgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px;}
+.sbj{background:var(–panel);border:2px solid var(–border);padding:8px 10px;}
+.sbjlbl{font-size:8px;margin-bottom:5px;display:flex;justify-content:space-between;font-weight:700;}
+.sbjbar{height:8px;background:rgba(0,0,0,.4);border:1px solid var(–border);}
+.sbjfill{height:100%;transition:width .6s ease;}
+
+/* ── TABS ── */
+.tablist{display:flex;gap:0;flex-wrap:wrap;border-bottom:2px solid var(–border-lit);}
+.tabbtn{
+font-family:‘Lato’,sans-serif;font-weight:900;font-size:10px;
+background:var(–panel);border:2px solid var(–border);
+border-bottom:none;color:var(–dim);
+padding:9px 14px;cursor:pointer;transition:all .15s;
+position:relative;bottom:-2px;letter-spacing:1px;
+text-transform:uppercase;
+}
+.tabbtn:hover{color:var(–cream);border-color:var(–border-lit);}
+.tabbtn.active{color:var(–gold);border-color:var(–border-lit);border-bottom:2px solid var(–bg);background:var(–panel2);}
+.tabpanel{display:none;margin-top:14px;}
+.tabpanel.active{display:block;}
+
+/* ── GRID ── */
+.mgrid{display:grid;grid-template-columns:1fr 272px;gap:14px;align-items:start;}
+@media(max-width:700px){.mgrid{grid-template-columns:1fr;}}
+
+/* ── CARD ── */
+.card{background:var(–panel);border:2px solid var(–border);padding:16px;margin-bottom:14px;box-shadow:0 2px 20px rgba(0,0,0,.3);}
+.ctitle{
+font-family:‘Playfair Display’,serif;font-size:17px;font-weight:700;
+margin-bottom:12px;display:flex;align-items:center;gap:8px;
+border-bottom:1px solid var(–border);padding-bottom:10px;color:var(–gold);
+}
+
+/* ── WEEK FILTER ── */
+.wk-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.wkbtn{
+font-family:‘Lato’,sans-serif;font-weight:700;font-size:9px;
+background:transparent;border:1px solid var(–border-lit);
+color:var(–dim);padding:4px 10px;cursor:pointer;
+transition:all .12s;text-transform:uppercase;letter-spacing:.5px;
+}
+.wkbtn:hover,.wkbtn.active{background:var(–amber);color:var(–ink);border-color:var(–amber);}
+
+/* ── SUBJECT FILTER ── */
+.subj-filters{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.sfjbtn{
+font-family:‘Lato’,sans-serif;font-weight:700;font-size:8px;
+background:transparent;border:1px solid var(–border-lit);
+color:var(–dim);padding:3px 9px;cursor:pointer;
+transition:all .12s;letter-spacing:.5px;
+display:flex;align-items:center;gap:4px;
+}
+.sfjbtn.active{color:var(–ink);}
+
+/* ── SCHEDULE ── */
+.wheader{
+font-family:‘Playfair Display’,serif;font-style:italic;
+font-size:12px;color:var(–amber);
+padding:8px 0 4px;border-bottom:1px dashed var(–border);
+margin-bottom:4px;
+}
+.srow{
+display:flex;align-items:center;gap:9px;
+padding:9px 10px;margin-bottom:3px;
+border:1px solid var(–border);
+background:rgba(255,255,255,.01);
+cursor:default;transition:all .13s;position:relative;
+}
+.srow:hover{border-color:var(–border-lit);background:rgba(212,130,26,.05);transform:translateX(2px);}
+.srow.done{border-color:rgba(122,144,96,.5);background:rgba(122,144,96,.06);opacity:.7;}
+.srow.today{border-color:var(–gold);box-shadow:0 0 10px rgba(232,176,64,.25);}
+.srow.examrow{
+border-color:rgba(192,72,32,.5);background:rgba(192,72,32,.1);
+justify-content:center;text-align:center;font-size:11px;
+color:var(–rust);font-weight:700;
+animation:epulse 1.5s ease-in-out infinite;
+}
+@keyframes epulse{0%,100%{opacity:1;}50%{opacity:.65;}}
+.sdate{font-size:9px;color:var(–dim);min-width:90px;flex-shrink:0;font-weight:700;}
+.spip{width:10px;height:10px;flex-shrink:0;}
+.stask{font-size:10px;flex:1;line-height:1.5;color:var(–cream);}
+.sterm{font-size:8px;color:var(–dim);flex-shrink:0;font-style:italic;min-width:48px;text-align:right;}
+.sxp{font-family:‘Playfair Display’,serif;font-size:10px;color:var(–gold);flex-shrink:0;font-weight:700;}
+.donebtn{
+font-family:‘Lato’,sans-serif;font-weight:900;font-size:9px;
+background:transparent;border:1px solid var(–sage);color:var(–sage);
+padding:4px 8px;cursor:pointer;flex-shrink:0;transition:all .12s;
+letter-spacing:.5px;text-transform:uppercase;
+}
+.donebtn:hover{background:var(–sage);color:var(–ink);}
+.donetick{font-size:14px;color:var(–sage);flex-shrink:0;}
+.hidden{display:none!important;}
+.sscroll{max-height:500px;overflow-y:auto;padding-right:4px;}
+.sscroll::-webkit-scrollbar{width:4px;}
+.sscroll::-webkit-scrollbar-thumb{background:var(–border-lit);}
+
+/* ── RIGHT PANEL ── */
+.bosslist{list-style:none;}
+.bosslist li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(–border);font-size:11px;color:var(–dim);}
+.bosslist li:last-child{border-bottom:none;}
+.bossicon{font-size:18px;flex-shrink:0;}
+
+/* ── CHARACTERS ── */
+.chargrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.charcard{
+border:1px solid var(–border);padding:10px 8px;text-align:center;
+transition:all .2s;
+}
+.charcard.unlocked{
+border-color:var(–gold);background:rgba(232,176,64,.06);
+box-shadow:0 0 14px rgba(232,176,64,.15);
+}
+.charcard.locked{opacity:.35;filter:grayscale(.8);}
+.charemoji{font-size:26px;display:block;margin-bottom:5px;}
+.charname{
+font-family:‘Playfair Display’,serif;font-size:11px;
+display:block;color:var(–gold);margin-bottom:3px;font-weight:700;
+}
+.charreq{font-size:9px;color:var(–dim);line-height:1.4;}
+.charcard.unlocked .charreq{color:var(–sage);}
+
+/* ── TIPS ── */
+.tipitem{
+border:1px solid var(–border);border-left:4px solid var(–amber);
+padding:10px;margin-bottom:8px;
+background:rgba(255,255,255,.015);
+}
+.tipsubj{
+font-family:‘Playfair Display’,serif;font-size:9px;
+color:var(–amber);margin-bottom:4px;letter-spacing:1px;
+font-weight:700;text-transform:uppercase;
+}
+.tiptext{font-size:11px;color:var(–cream);line-height:1.7;font-weight:400;}
+
+/* ── LEGEND ── */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.legitem{display:flex;align-items:center;gap:5px;font-size:9px;font-weight:700;}
+.legpip{width:10px;height:10px;flex-shrink:0;}
+
+/* ── PROGRESS STATS ── */
+.stats-card .stat-row{
+display:flex;justify-content:space-between;align-items:center;
+padding:5px 0;border-bottom:1px solid var(–border);font-size:10px;
+}
+.stats-card .stat-row:last-child{border-bottom:none;}
+.stat-num{font-family:‘Playfair Display’,serif;font-weight:700;color:var(–gold);font-size:14px;}
+
+/* ── SAVE / IMPORT ── */
+.savebtn{
+width:100%;font-family:‘Lato’,sans-serif;font-weight:900;font-size:10px;
+background:transparent;border:2px solid var(–border-lit);color:var(–cream);
+padding:8px 12px;cursor:pointer;transition:all .15s;
+text-transform:uppercase;letter-spacing:1px;
+}
+.savebtn:hover{background:var(–amber);color:var(–ink);border-color:var(–amber);}
+.savebtn-import{margin-top:6px;border-color:var(–sage);color:var(–sage);}
+.savebtn-import:hover{background:var(–sage);color:var(–ink);border-color:var(–sage);}
+.savebox{
+width:100%;background:rgba(0,0,0,.4);border:1px solid var(–border-lit);
+color:var(–cream);font-family:‘Lato’,sans-serif;font-size:9px;
+padding:8px;resize:vertical;min-height:56px;
+letter-spacing:.5px;line-height:1.5;
+}
+.savebox::placeholder{color:var(–dim);}
+.save-msg{
+font-size:9px;margin-top:8px;padding:6px 8px;
+display:none;border-left:3px solid var(–sage);
+color:var(–sage);background:rgba(122,144,96,.08);
+line-height:1.5;letter-spacing:.5px;
+}
+.save-msg.error{border-color:var(–rust);color:var(–rust);background:rgba(192,72,32,.08);}
+.save-msg.show{display:block;}
+
+/* ── TOAST ── */
+.toast{
+position:fixed;bottom:28px;left:50%;
+transform:translateX(-50%) translateY(130px);
+background:var(–panel2);border:2px solid var(–gold);
+padding:16px 28px;text-align:center;z-index:10000;
+transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toemoji{font-size:28px;display:block;margin-bottom:5px;}
+.totitle{font-family:‘Playfair Display’,serif;font-size:16px;font-weight:700;color:var(–gold);}
+.tosub{font-size:10px;color:var(–dim);margin-top:5px;line-height:1.6;}
+</style>
+
+</head>
+<body>
+
+<div id="motes"></div>
+
+<div class="page">
+
+<!-- HEADER -->
+
+<div class="header">
+  <div class="header-deco">
+    <div class="deco-line"></div>
+    &nbsp;✦ Est. Year 8 ✦&nbsp;
+    <div class="deco-line"></div>
+  </div>
+  <div class="title">
+    Lackadaisy Study Club
+    <span class="title-cat">— A KAT Revision Production —</span>
+  </div>
+  <div class="subtitle">All Terms · All Subjects · One Show</div>
+  <div class="art-deco-border">
+    <div class="adb-line"></div>
+    🐱
+    <div class="adb-line"></div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+
+<div class="cdwrap">
+  <div class="cdbox">
+    <span class="cdnum" id="cdnum">--</span>
+    <div class="cdsub">days until the <b>KATs begin (18th May)</b></div>
+  </div>
+</div>
+
+<!-- PLAYER BAR -->
+
+<div class="pbar">
+  <div class="avatar">🐱</div>
+  <div class="pdetails">
+    <div class="pname">Revision Power</div>
+    <div class="barwrap">
+      <div class="barfill" id="barfill" style="width:0%"></div>
+      <span class="bartext" id="bartext">0 / 0</span>
+    </div>
+    <div class="xpline" id="xpline">XP: 0 — complete tasks to power up!</div>
+  </div>
+  <div class="lvbadge" id="lvbadge">LV 1</div>
+</div>
+
+<!-- SUBJECT BARS -->
+
+<div class="sbjgrid" id="sbjgrid"></div>
+
+<!-- TABS -->
+
+<div class="tablist" id="tablist"></div>
+
+<!-- TAB: SCHEDULE -->
+
+<div class="tabpanel active" id="tp-schedule">
+  <div class="mgrid">
+    <div>
+      <div class="card">
+        <div class="ctitle">📋 Quest Log — Full Year Revision</div>
+        <div class="legend" id="legend"></div>
+
+```
+    <!-- Week filters -->
+    <div class="wk-filters" id="wkfilters"></div>
+    <!-- Subject filters -->
+    <div class="subj-filters" id="sfjfilters"></div>
+
+    <div class="sscroll" id="scheduleEl"></div>
+  </div>
+</div>
+<div>
+  <div class="card">
+    <div class="ctitle" style="color:var(--rust)">⚡ Boss Battles</div>
+    <ul class="bosslist">
+      <li><span class="bossicon">🔢</span><div><div style="color:var(--math);font-size:10px">Sun 18 May</div>Maths KAT</div></li>
+      <li><span class="bossicon">📖</span><div><div style="color:var(--eng);font-size:10px">Mon 19 May</div>English KAT</div></li>
+      <li><span class="bossicon">🔬</span><div><div style="color:var(--sci);font-size:10px">Tue 20 May</div>Science KAT</div></li>
+    </ul>
+  </div>
+
+  <div class="card stats-card">
+    <div class="ctitle">📊 Your Stats</div>
+    <div class="stat-row"><span>Tasks done</span><span class="stat-num" id="statDone">0</span></div>
+    <div class="stat-row"><span>Total XP</span><span class="stat-num" id="statXP">0</span></div>
+    <div class="stat-row"><span>Subjects started</span><span class="stat-num" id="statSubjs">0 / 7</span></div>
+    <div class="stat-row"><span>Days to go</span><span class="stat-num" id="statDays">--</span></div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle" style="color:var(--sepia)">💾 Save Backup</div>
+    <p style="font-size:10px;color:var(--dim);margin-bottom:10px;line-height:1.6;">Export your progress as a save code. If you ever switch browser or device, paste it back in to restore everything.</p>
+
+    <button class="savebtn" onclick="exportSave()">📋 Copy Save Code</button>
+
+    <div style="margin-top:10px;">
+      <textarea id="importBox" class="savebox" placeholder="Paste save code here to restore progress..."></textarea>
+      <button class="savebtn savebtn-import" onclick="importSave()">⬆ Import Save</button>
+    </div>
+
+    <div id="saveMsg" class="save-msg"></div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle" style="color:var(--gold)">🐾 Lackadaisy Crew</div>
+    <div style="font-size:10px;color:var(--dim);margin-bottom:10px;">Finish tasks to unlock the gang!</div>
+    <div class="chargrid" id="chargrid"></div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- TAB: TIPS -->
+
+<div class="tabpanel" id="tp-tips">
+  <div class="card">
+    <div class="ctitle">💡 Study Tips — From the Speakeasy</div>
+    <div id="tipsEl"></div>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+  <span class="toemoji" id="toemoji">⭐</span>
+  <div class="totitle" id="totitle">Nice work!</div>
+  <div class="tosub" id="tosub"></div>
+</div>
+
+<script>
+const SUBJECTS=[
+  {id:'math', label:'Maths',     color:'var(--math)',  emoji:'🔢'},
+  {id:'eng',  label:'English',   color:'var(--eng)',   emoji:'📖'},
+  {id:'sci',  label:'Science',   color:'var(--sci)',   emoji:'🔬'},
+  {id:'geo',  label:'Geography', color:'var(--geo)',   emoji:'🌍'},
+  {id:'hist', label:'History',   color:'var(--hist)',  emoji:'🏰'},
+  {id:'comp', label:'Computing', color:'var(--comp)',  emoji:'💻'},
+  {id:'pe',   label:'PE',        color:'var(--pe)',    emoji:'🏃'},
+];
+
+// ──────────────────────────────────────────────────────────────
+// FULL YEAR 8 SCHEDULE — Terms 1–5 from uploaded curriculum docs
+// ──────────────────────────────────────────────────────────────
+// MATHS Y8: T1 Ratio/Scale, Multiplicative Change, Multiplying/dividing fractions
+//            T2 Cartesian plane, Representing data, Tables & probability
+//            T3 Brackets/equations/inequalities, Sequences, Indices
+//            T4 Fractions & Percentages, Standard Index Form, Number Sense
+//            T5 Angles in parallel lines & polygons, Area of trapezia & circles, Line symmetry & reflection
+// ENGLISH Y8: T1+T2 Sherlock Holmes (English Mastery workbook)
+//             T3+T4 Romeo and Juliet
+//             T5 Rhetoric → Animal Farm
+// SCIENCE Y8: T1 Health & Lifestyle, The Periodic Table, Motion & Pressure
+//             T2 Adaptation & Inheritance, Separating Techniques
+//             T3 Energy, Respiration
+//             T4 Earth Structure, Photosynthesis
+//             T5 Metals & their Reactions, Electricity & Electromagnetism
+// GEOGRAPHY Y8: T1 River Rivals (River Nile)
+//               T2 Food & Famine
+//               T3 Endless Energy
+//               T4 Climate Change
+//               T5 Polar Environments
+// HISTORY Y8: T1+T2 British Empire & Transatlantic Slave Trade
+//             T3+T4 Industrial Revolution
+//             T5+T6 The First World War
+// COMPUTING Y8: T1 Data representation (text & numbers)
+//               T2 Introduction to Python programming
+//               T3+T4 Developing for the Web
+//               T5+T6 Mobile App Development
+// PE Y8: T1 Athletics, T2 Badminton, T3 Swimming, T4 Rugby, T5 Netball
+
+const SCHEDULE=[
+
+// ═══ TERM 1 ════════════════════════════════════════════════
+{week:'Term 1 — The Opening Act', term:'T1', date:'Wk 1A', subj:'math', xp:25,
+ task:'Maths — Ratio & Scale: writing and simplifying ratios, scale factors',
+ tip:'A ratio compares two amounts. 3:6 simplifies to 1:2. To scale up, multiply both parts. To scale down, divide. These come up in real-life problems a lot.'},
+{week:null, term:'T1', date:'Wk 1B', subj:'math', xp:25,
+ task:'Maths — Multiplicative Change: direct proportion, conversion graphs',
+ tip:'If something doubles, everything doubles. Use the unitary method: find the value of ONE first, then multiply up.'},
+{week:null, term:'T1', date:'Wk 1C', subj:'math', xp:25,
+ task:'Maths — Multiplying & Dividing Fractions: method and word problems',
+ tip:'Multiply = multiply tops, multiply bottoms. Divide = flip the second fraction and multiply. Always simplify your answer.'},
+{week:null, term:'T1', date:'Wk 1D', subj:'eng', xp:20,
+ task:'English — Sherlock Holmes: story context, Victorian setting, Holmes as a character',
+ tip:'Think about what Holmes\'s character tells us about Victorian values — logic, rationality, science over superstition. That context gets you marks.'},
+{week:null, term:'T1', date:'Wk 1E', subj:'sci', xp:25,
+ task:'Science — Health & Lifestyle: balanced diet, nutrients, effects of drugs & alcohol',
+ tip:'Know the seven nutrients (carbs, protein, fat, vitamins, minerals, fibre, water) and what each does. Deficiency diseases link nutrients to symptoms.'},
+{week:null, term:'T1', date:'Wk 1F', subj:'sci', xp:25,
+ task:'Science — The Periodic Table: groups, periods, metals vs non-metals, atomic structure',
+ tip:'Group = number of outer electrons. Period = number of electron shells. Elements in the same group have similar properties — that\'s the whole point of the table.'},
+{week:null, term:'T1', date:'Wk 1G', subj:'geo', xp:20,
+ task:'Geography — River Rivals: how a river changes from source to mouth (long profile)',
+ tip:'Upper course = steep, narrow, V-shaped valley. Lower course = wide, flat, meanders. The river\'s energy changes along its course — that\'s why its shape changes.'},
+{week:null, term:'T1', date:'Wk 1H', subj:'geo', xp:20,
+ task:'Geography — The River Nile: geography, the Nile floodplains, why the Nile is at risk',
+ tip:'The Nile flows north through desert — without it, Egypt doesn\'t exist. The GERD dam debate is a great case study: upstream vs downstream countries conflicting.'},
+{week:null, term:'T1', date:'Wk 1I', subj:'hist', xp:20,
+ task:'History — The British Empire: how it grew, key colonies, why Britain built an empire',
+ tip:'Trade, power and resources. Britain wanted raw materials (cotton, sugar, rubber) and new markets to sell to. The empire made Britain extremely wealthy — for some.'},
+{week:null, term:'T1', date:'Wk 1J', subj:'sci', xp:25,
+ task:'Science — Motion & Pressure: speed = distance/time, pressure = force/area',
+ tip:'Speed triangle: cover what you want. s = d/t, d = s×t, t = d/s. Pressure — bigger area = lower pressure. That\'s why snowshoes work.'},
+{week:null, term:'T1', date:'Wk 1K', subj:'comp', xp:20,
+ task:'Computing — Data Representation: how text & numbers are stored in binary',
+ tip:'Computers use binary (0s and 1s) to store everything. Each 0 or 1 is a bit. 8 bits = 1 byte. ASCII is the code that maps letters to binary numbers.'},
+{week:null, term:'T1', date:'Wk 1L', subj:'pe', xp:15,
+ task:'PE — Athletics: sprint technique, middle distance running, shot put, javelin, high jump, relays',
+ tip:'For written PE questions: know the correct technique terms. Drive phase, flight phase, landing. Use the right vocabulary — it\'s what examiners want to see.'},
+
+// ═══ TERM 2 ════════════════════════════════════════════════
+{week:'Term 2 — Second Set', term:'T2', date:'Wk 2A', subj:'math', xp:25,
+ task:'Maths — Working in the Cartesian Plane: coordinates, gradients, y = mx + c',
+ tip:'Gradient = rise ÷ run. In y = mx + c, m is the gradient and c is where the line crosses the y-axis. Plot two points and join them — that\'s your line.'},
+{week:null, term:'T2', date:'Wk 2B', subj:'math', xp:25,
+ task:'Maths — Representing Data: scatter graphs, line graphs, bar charts — reading & drawing',
+ tip:'Scatter graphs show correlation — positive, negative, or none. Draw a line of best fit through the middle of the data. Correlation does NOT mean causation.'},
+{week:null, term:'T2', date:'Wk 2C', subj:'math', xp:25,
+ task:'Maths — Tables & Probability: sample space diagrams, tree diagrams, relative frequency',
+ tip:'Probability is always between 0 and 1. P(event) = favourable outcomes ÷ total outcomes. For two independent events, multiply the probabilities.'},
+{week:null, term:'T2', date:'Wk 2D', subj:'eng', xp:20,
+ task:'English — Sherlock Holmes: language analysis, tension, how Doyle creates suspense',
+ tip:'Find specific language choices and explain their effect on the reader. Don\'t just spot a technique — explain why the writer used it and what feeling it creates.'},
+{week:null, term:'T2', date:'Wk 2E', subj:'sci', xp:25,
+ task:'Science — Adaptation & Inheritance: natural selection, variation, DNA & genes basics',
+ tip:'Natural selection: organisms with useful adaptations survive and pass them on. Over many generations, the population changes. Darwin called this evolution.'},
+{week:null, term:'T2', date:'Wk 2F', subj:'sci', xp:20,
+ task:'Science — Separating Techniques: filtration, distillation, chromatography, evaporation',
+ tip:'Each technique separates based on a different property. Filtration = particle size. Distillation = boiling point. Chromatography = solubility. Know which to use when.'},
+{week:null, term:'T2', date:'Wk 2G', subj:'geo', xp:20,
+ task:'Geography — Food & Famine: food security, why some countries face food shortages',
+ tip:'Food insecurity happens when people can\'t reliably access enough food. Link causes: climate, conflict, poverty, soil quality. Named examples score marks.'},
+{week:null, term:'T2', date:'Wk 2H', subj:'geo', xp:20,
+ task:'Geography — Food Security strategies: short-term (food aid) vs long-term (irrigation, GM crops)',
+ tip:'Short-term strategies are quick fixes. Long-term ones aim to fix the underlying problem. Know at least one specific example of each for the exam.'},
+{week:null, term:'T2', date:'Wk 2I', subj:'hist', xp:20,
+ task:'History — Transatlantic Slave Trade: triangle of trade, conditions, resistance & abolition',
+ tip:'The trade triangle: manufactured goods → Africa, enslaved people → Americas, raw materials → Britain. Understand both the economics AND the human cost.'},
+{week:null, term:'T2', date:'Wk 2J', subj:'comp', xp:20,
+ task:'Computing — Python Basics: print(), variables, input(), if/elif/else, while loops',
+ tip:'Understand what each line does, not just how to write it. A variable stores a value. A loop repeats code. Selection (if) makes decisions. These are the core building blocks.'},
+{week:null, term:'T2', date:'Wk 2K', subj:'pe', xp:15,
+ task:'PE — Badminton: drop shot, net shot, smash shot, singles and doubles play',
+ tip:'Badminton uses angles. A drop shot lands just over the net. A smash is hit downward steeply. In written questions, describe WHY you\'d use each shot tactically.'},
+
+// ═══ TERM 3 ════════════════════════════════════════════════
+{week:'Term 3 — Midway Through the Show', term:'T3', date:'Wk 3A', subj:'math', xp:25,
+ task:'Maths — Brackets, Equations & Inequalities: expanding brackets, solving linear equations',
+ tip:'To expand: multiply everything inside the bracket by what\'s outside. To solve: do the same thing to both sides. Keep it balanced — like a set of scales.'},
+{week:null, term:'T3', date:'Wk 3B', subj:'math', xp:25,
+ task:'Maths — Sequences: nth term rule, arithmetic sequences, finding the rule',
+ tip:'For a linear sequence, the nth term = (difference)n + (zero term). The zero term is what comes before the first term. Test it by putting n=1,2,3 back in.'},
+{week:null, term:'T3', date:'Wk 3C', subj:'math', xp:25,
+ task:'Maths — Indices: index laws (multiply = add, divide = subtract, power of a power = multiply)',
+ tip:'x² × x³ = x⁵ (add). x⁶ ÷ x² = x⁴ (subtract). (x²)³ = x⁶ (multiply). Anything to the power 0 = 1. Negative index = 1/that thing.'},
+{week:null, term:'T3', date:'Wk 3D', subj:'eng', xp:25,
+ task:'English — Romeo & Juliet: plot, characters (Romeo, Juliet, Mercutio, Tybalt, Friar Lawrence)',
+ tip:'Know what each character represents thematically, not just what they do. Romeo = passionate but impulsive. Friar Lawrence = good intentions, terrible consequences.'},
+{week:null, term:'T3', date:'Wk 3E', subj:'eng', xp:20,
+ task:'English — Romeo & Juliet: Shakespeare\'s language, iambic pentameter, key quotes',
+ tip:'Iambic pentameter = 10 syllables per line, alternating stressed and unstressed. Shakespeare breaks it deliberately when characters are emotional or chaotic.'},
+{week:null, term:'T3', date:'Wk 3F', subj:'sci', xp:25,
+ task:'Science — Energy: energy stores & transfers, conservation of energy, Sankey diagrams',
+ tip:'Energy is never created or destroyed — it just transfers between stores. A Sankey diagram shows useful energy (thicker arrow) and wasted energy (thinner arrows).'},
+{week:null, term:'T3', date:'Wk 3G', subj:'sci', xp:25,
+ task:'Science — Respiration: aerobic vs anaerobic respiration equations, why we respire',
+ tip:'Aerobic: glucose + oxygen → CO₂ + water + energy. Anaerobic (in muscles): glucose → lactic acid + energy. Anaerobic is less efficient — that\'s why you tire fast.'},
+{week:null, term:'T3', date:'Wk 3H', subj:'geo', xp:20,
+ task:'Geography — Endless Energy: fossil fuels vs renewables, global energy mix, why we\'re changing',
+ tip:'Fossil fuels are finite and polluting. Renewables are sustainable but have limitations (intermittent, expensive). Know the pros and cons of at least two of each.'},
+{week:null, term:'T3', date:'Wk 3I', subj:'hist', xp:20,
+ task:'History — Industrial Revolution: causes, key inventions, changes to industry & transport',
+ tip:'Coal + steam power + new machinery = factories. This moved work from homes/fields to factories. Know: Spinning Jenny, steam engine (Watt), canals → railways.'},
+{week:null, term:'T3', date:'Wk 3J', subj:'comp', xp:20,
+ task:'Computing — Developing for the Web: HTML structure, adding images, intro to CSS',
+ tip:'HTML = structure (what\'s on the page). CSS = style (how it looks). A tag like <h1> creates a heading; CSS changes its colour, size, font. They work together.'},
+{week:null, term:'T3', date:'Wk 3K', subj:'pe', xp:15,
+ task:'PE — Swimming: front crawl, backstroke, breaststroke, butterfly — technique cues',
+ tip:'Each stroke has a different arm pull pattern and breathing rhythm. In written questions, describe the body position and stroke technique accurately.'},
+
+// ═══ TERM 4 ════════════════════════════════════════════════
+{week:'Term 4 — The Big Build-Up', term:'T4', date:'Wk 4A', subj:'math', xp:25,
+ task:'Maths — Fractions & Percentages: percentage change, reverse percentages, compound interest',
+ tip:'% change = (change ÷ original) × 100. Compound interest multiplies each time. A 10% increase = × 1.1. Reverse percentage: divide by the multiplier.'},
+{week:null, term:'T4', date:'Wk 4B', subj:'math', xp:25,
+ task:'Maths — Standard Index Form: writing, calculating and converting very large/small numbers',
+ tip:'A × 10ⁿ where 1 ≤ A < 10. To multiply: multiply the A parts, add the powers. Check your answer is still in standard form — the first number must be 1 to 9.'},
+{week:null, term:'T4', date:'Wk 4C', subj:'math', xp:20,
+ task:'Maths — Number Sense: rounding, estimation, significant figures, error intervals',
+ tip:'Always estimate before solving — it tells you if your answer is sensible. Significant figures: count from the first non-zero digit, including zeros after it.'},
+{week:null, term:'T4', date:'Wk 4D', subj:'eng', xp:25,
+ task:'English — Romeo & Juliet: themes (love, fate, conflict, family), PEE analysis',
+ tip:'A theme answer structure: introduce the theme → give a quote → analyse the language → explain the effect → consider context. Five parts, strong answer.'},
+{week:null, term:'T4', date:'Wk 4E', subj:'eng', xp:20,
+ task:'English — Romeo & Juliet: form, structure and language — how Shakespeare crafts meaning',
+ tip:'Think about WHY Shakespeare structured scenes a certain way. The play shifts from comedy to tragedy after Mercutio\'s death — that\'s a deliberate structural choice.'},
+{week:null, term:'T4', date:'Wk 4F', subj:'sci', xp:25,
+ task:'Science — Earth Structure: tectonic plates, earthquakes, volcanoes, the rock cycle',
+ tip:'The Earth\'s crust is in sections (plates) that move very slowly. Where plates meet: volcanoes and earthquakes happen. Convergent = collision, divergent = pulling apart.'},
+{week:null, term:'T4', date:'Wk 4G', subj:'sci', xp:25,
+ task:'Science — Photosynthesis: equation, factors affecting rate, leaf structure and its function',
+ tip:'CO₂ + water + light energy → glucose + oxygen. Rate is affected by light intensity, CO₂ concentration, and temperature. Above a certain level, these plateau.'},
+{week:null, term:'T4', date:'Wk 4H', subj:'geo', xp:20,
+ task:'Geography — Climate Change: evidence, causes (natural vs human), effects around the world',
+ tip:'Evidence: rising global temperatures, melting ice, rising sea levels, shifting seasons. Human cause = greenhouse gases (CO₂, methane). Natural causes include Milankovitch cycles.'},
+{week:null, term:'T4', date:'Wk 4I', subj:'hist', xp:20,
+ task:'History — Industrial Revolution: living & working conditions, poverty, child labour, reforms',
+ tip:'Cities grew fast and became overcrowded. Factories were dangerous. Children worked from young ages. Reformers like Shaftesbury campaigned for change — and eventually won.'},
+{week:null, term:'T4', date:'Wk 4J', subj:'comp', xp:20,
+ task:'Computing — Web Development: CSS styling, search engine rankings, how search works',
+ tip:'Search engines rank pages based on relevance, quality and links. SEO (Search Engine Optimisation) is how websites try to appear higher in results.'},
+{week:null, term:'T4', date:'Wk 4K', subj:'pe', xp:15,
+ task:'PE — Rugby: passing, receiving, rucking, kicking, line-outs — rules & techniques',
+ tip:'In rugby, the ball must be passed sideways or backwards — never forward. A ruck forms when the ball is on the ground and players contest for it.'},
+
+// ═══ TERM 5 ════════════════════════════════════════════════
+{week:'Term 5 — Final Rehearsal (Before the Big Show)', term:'T5', date:'Wk 5A', subj:'math', xp:30,
+ task:'Maths — Angles in Parallel Lines: alternate (Z), corresponding (F), co-interior (C = 180°)',
+ tip:'Draw the letter shapes to remember. Alternate angles are EQUAL. Corresponding angles are EQUAL. Co-interior angles ADD to 180°. Always state your reason in proofs.'},
+{week:null, term:'T5', date:'Wk 5B', subj:'math', xp:30,
+ task:'Maths — Angles in Polygons: interior & exterior angles, sum of interior angles = (n-2) × 180',
+ tip:'A triangle = 180°. Quadrilateral = 360°. Pentagon = 540°. Pattern: each extra side adds 180°. Exterior angles of ANY polygon always sum to 360°.'},
+{week:null, term:'T5', date:'Wk 5C', subj:'math', xp:30,
+ task:'Maths — Area of Trapezia & Circles: ½(a+b)h and πr² — formula practice',
+ tip:'Write the formula first, substitute values second, calculate third. This three-step habit gets you method marks even if you slip up on the arithmetic.'},
+{week:null, term:'T5', date:'Wk 5D', subj:'math', xp:25,
+ task:'Maths — Line Symmetry & Reflection: reflecting shapes in lines (x=a, y=a, y=x)',
+ tip:'To reflect in y = x, swap the x and y coordinates of every point. For x = a or y = a, count the distance to the line and mirror it on the other side.'},
+{week:null, term:'T5', date:'Wk 5E', subj:'eng', xp:25,
+ task:'English — Rhetoric: persuasive techniques — Rule of Three, rhetorical questions, anaphora',
+ tip:'Rhetoric is designed to make an audience feel or do something. Identify the technique, quote it, then explain what effect it has on the audience. Always explain the WHY.'},
+{week:null, term:'T5', date:'Wk 5F', subj:'eng', xp:25,
+ task:'English — Animal Farm: characters as allegory, key events, Orwell\'s message',
+ tip:'Napoleon = Stalin, Snowball = Trotsky, Boxer = loyal working class, Squealer = propaganda. Orwell wrote this to criticise how revolutions can be corrupted by power.'},
+{week:null, term:'T5', date:'Wk 5G', subj:'sci', xp:30,
+ task:'Science — Metals & Reactivity: reactivity series, displacement reactions, oxidation',
+ tip:'More reactive metals displace less reactive ones from solutions. e.g. Iron + copper sulfate → iron sulfate + copper. The reactivity series is a must-know ranking.'},
+{week:null, term:'T5', date:'Wk 5H', subj:'sci', xp:30,
+ task:'Science — Electricity & Electromagnetism: V = IR, series vs parallel circuits, magnetism',
+ tip:'V = I × R is your key formula. In series, current is the same throughout. In parallel, voltage is the same across each branch. Electromagnets are temporary — current makes them.'},
+{week:null, term:'T5', date:'Wk 5I', subj:'geo', xp:25,
+ task:'Geography — Polar Environments: characteristics, climate, adaptations of plants & animals',
+ tip:'Polar regions are cold because sunlight hits at a very low angle. Animals adapt through insulation (blubber, thick fur), hibernation, or migration.'},
+{week:null, term:'T5', date:'Wk 5J', subj:'hist', xp:30,
+ task:'History — WW1 Causes: MAIN (Militarism, Alliances, Imperialism, Nationalism) + assassination',
+ tip:'MAIN gives you the long-term causes. The assassination of Franz Ferdinand (June 1914) was the trigger. Think of MAIN as the pile of dry wood, the assassination as the match.'},
+{week:null, term:'T5', date:'Wk 5K', subj:'hist', xp:25,
+ task:'History — WW1 Trench Warfare: trench conditions, tactics, why the war became a stalemate',
+ tip:'Trenches protected soldiers from artillery and machine guns. Neither side could advance without huge losses. Specific details = marks: mud, rats, disease, constant shellfire.'},
+{week:null, term:'T5', date:'Wk 5L', subj:'comp', xp:25,
+ task:'Computing — Mobile App Dev: events & interactions, user inputs, variables, multiple screens',
+ tip:'An event = something the user does (tap a button, type text). A variable = a named box that stores a value. Navigation between screens needs each screen to be linked with events.'},
+{week:null, term:'T5', date:'Wk 5M', subj:'pe', xp:20,
+ task:'PE — Netball: positions, zones, attacking & defending strategies, shooting rules',
+ tip:'Know all 7 positions and what zone they\'re allowed in — this is prime written assessment material. GS and GA are the only players allowed to shoot.'},
+
+// ═══ EXAM WEEK ═══════════════════════════════════════════
+{week:'⚡ Showtime — Exam Week', term:'EX', date:'18 May', subj:'exam', xp:0,
+ task:'🔢 MATHS KAT — You\'ve put the work in. Go get it!'},
+{week:null, term:'EX', date:'19 May', subj:'exam', xp:0,
+ task:'📖 ENGLISH KAT — Show them everything you\'ve got!'},
+{week:null, term:'EX', date:'20 May', subj:'exam', xp:0,
+ task:'🔬 SCIENCE KAT — Final act. Finish strong!'},
+];
+
+const CHARACTERS=[
+  {name:'Tracy',    emoji:'🐱', req:'Complete 5 tasks',           needed:5},
+  {name:'Freckle',  emoji:'😼', req:'Complete 12 tasks',          needed:12},
+  {name:'Rocky',    emoji:'🐾', req:'Complete 20 tasks',          needed:20},
+  {name:'Ivy',      emoji:'🌿', req:'Finish all Maths tasks',     needed:'allMath'},
+  {name:'Mitzi',    emoji:'🎷', req:'Finish all English tasks',   needed:'allEng'},
+  {name:'Viktor',   emoji:'🥃', req:'Finish all Science tasks',   needed:'allSci'},
+  {name:'Mordecai', emoji:'🎩', req:'Complete all of Term 1',     needed:'allT1'},
+  {name:'Zib',      emoji:'🎺', req:'Complete every single task!',needed:38},
+];
+
+const TIPS=[
+  {subj:'All Subjects', tip:'Study for 25 minutes then take a 5 minute break — it\'s called the Pomodoro method. Your brain needs recovery time, just like after a match or a long gaming session.'},
+  {subj:'Maths', tip:'Don\'t read through maths problems — actually do them. Write out every step. Getting something wrong then understanding WHY is literally how your brain locks in the skill.'},
+  {subj:'English', tip:'PEE every time: Point → Evidence (a quote or specific example) → Explain what it shows about the writer\'s intention. Three parts, every answer, no exceptions.'},
+  {subj:'Science', tip:'Make flashcards for key equations and definitions. Write the topic on one side, the formula or definition on the other. Test yourself out loud — reading silently doesn\'t stick as well.'},
+  {subj:'Geography', tip:'Use named examples in every answer. Not just "a cold place" — say "Antarctica" or "the Yamal Peninsula in Russia". Named examples separate good answers from average ones.'},
+  {subj:'History', tip:'Structure answers as: Context → Event → Consequence. Why was this happening? What happened? What changed because of it? Connecting events to causes and outcomes is what gets the marks.'},
+  {subj:'Computing', tip:'Know your key vocabulary cold: algorithm, variable, iteration, Boolean, event, function. Written computing questions test whether you know the language, not just whether you can code.'},
+  {subj:'PE', tip:'PE written questions want technique vocabulary — not just "they ran fast" but "the drive phase, triple extension of ankle/knee/hip." The right terms show the examiner you know your stuff.'},
+];
+
+// ─────────────────────────────────
+// STATE
+// ─────────────────────────────────
+let completed = JSON.parse(localStorage.getItem('ldkq_v1') || '[]');
+function save(){ localStorage.setItem('ldkq_v1', JSON.stringify(completed)); }
+
+const nonExam = SCHEDULE.map((s,i) => s.subj !== 'exam' ? i : null).filter(i => i !== null);
+function doneSessions(){ return nonExam.filter(i => completed.includes(i)).length; }
+function totalXP(){ return nonExam.reduce((a,i) => completed.includes(i) ? a + SCHEDULE[i].xp : a, 0); }
+
+// active filters
+let activeWeek = 'all';
+let activeSubj = 'all';
+
+// ─────────────────────────────────
+// MOTES
+// ─────────────────────────────────
+function makeMotes(){
+  const c = document.getElementById('motes');
+  for(let i = 0; i < 20; i++){
+    const m = document.createElement('div');
+    m.className = 'mote';
+    const sz = Math.random() * 3 + 1;
+    m.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${Math.random()*14+8}s;--del:${Math.random()*10}s;--dx:${(Math.random()-0.5)*40}px;--dy:${Math.random()*-100-30}px`;
+    c.appendChild(m);
+  }
+}
+
+// ─────────────────────────────────
+// COUNTDOWN
+// ─────────────────────────────────
+function updateCountdown(){
+  const now = new Date(); now.setHours(0,0,0,0);
+  const exam = new Date('2025-05-18'); exam.setHours(0,0,0,0);
+  const days = Math.max(0, Math.ceil((exam - now) / 86400000));
+  document.getElementById('cdnum').textContent = days;
+  document.getElementById('statDays').textContent = days;
+}
+
+// ─────────────────────────────────
+// TABS
+// ─────────────────────────────────
+function buildTabs(){
+  const list = document.getElementById('tablist');
+  [{id:'schedule', label:'📋 Schedule'}, {id:'tips', label:'💡 Tips'}].forEach((t, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'tabbtn' + (idx===0 ? ' active' : '');
+    btn.textContent = t.label;
+    btn.onclick = () => {
+      document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tp-' + t.id).classList.add('active');
+    };
+    list.appendChild(btn);
+  });
+}
+
+// ─────────────────────────────────
+// FILTERS
+// ─────────────────────────────────
+function buildFilters(){
+  // Week filters
+  const wkWrap = document.getElementById('wkfilters');
+  const weeks = ['all','T1','T2','T3','T4','T5'];
+  const wkLabels = {all:'All Terms', T1:'Term 1', T2:'Term 2', T3:'Term 3', T4:'Term 4', T5:'Term 5'};
+  weeks.forEach(w => {
+    const btn = document.createElement('button');
+    btn.className = 'wkbtn' + (w === 'all' ? ' active' : '');
+    btn.textContent = wkLabels[w];
+    btn.onclick = () => {
+      activeWeek = w;
+      document.querySelectorAll('.wkbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSchedule();
+    };
+    wkWrap.appendChild(btn);
+  });
+
+  // Subject filters
+  const sfjWrap = document.getElementById('sfjfilters');
+  const allBtn = document.createElement('button');
+  allBtn.className = 'sfjbtn active';
+  allBtn.textContent = 'All';
+  allBtn.style.borderColor = 'var(--border-lit)';
+  allBtn.onclick = () => {
+    activeSubj = 'all';
+    document.querySelectorAll('.sfjbtn').forEach(b => b.classList.remove('active'));
+    allBtn.classList.add('active');
+    renderSchedule();
+  };
+  sfjWrap.appendChild(allBtn);
+
+  SUBJECTS.forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'sfjbtn';
+    btn.innerHTML = `<span>${s.emoji}</span> ${s.label}`;
+    btn.style.setProperty('--c', s.color);
+    btn.style.borderColor = s.color;
+    btn.onclick = () => {
+      activeSubj = s.id;
+      document.querySelectorAll('.sfjbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      btn.style.background = s.color.replace('var(','').replace(')','');
+      renderSchedule();
+    };
+    sfjWrap.appendChild(btn);
+  });
+}
+
+// ─────────────────────────────────
+// SUBJECT BARS
+// ─────────────────────────────────
+function buildSubjBars(){
+  const g = document.getElementById('sbjgrid'); g.innerHTML = '';
+  SUBJECTS.forEach(s => {
+    const total = SCHEDULE.filter(t => t.subj === s.id).length;
+    if(!total) return;
+    const done = SCHEDULE.filter((t,i) => t.subj === s.id && completed.includes(i)).length;
+    const pct = Math.round(done/total*100);
+    const el = document.createElement('div'); el.className = 'sbj';
+    el.innerHTML = `<div class="sbjlbl"><span style="color:${s.color}">${s.emoji} ${s.label}</span><span id="sp-${s.id}" style="color:${s.color}">${pct}%</span></div><div class="sbjbar"><div class="sbjfill" id="sb-${s.id}" style="width:${pct}%;background:${s.color}"></div></div>`;
+    g.appendChild(el);
+  });
+}
+function updateSubjBars(){
+  SUBJECTS.forEach(s => {
+    const total = SCHEDULE.filter(t => t.subj === s.id).length;
+    if(!total) return;
+    const done = SCHEDULE.filter((t,i) => t.subj === s.id && completed.includes(i)).length;
+    const pct = Math.round(done/total*100);
+    const bar = document.getElementById('sb-' + s.id);
+    const lbl = document.getElementById('sp-' + s.id);
+    if(bar) bar.style.width = pct + '%';
+    if(lbl) lbl.textContent = pct + '%';
+  });
+}
+
+// ─────────────────────────────────
+// LEGEND
+// ─────────────────────────────────
+function buildLegend(){
+  const el = document.getElementById('legend');
+  SUBJECTS.forEach(s => {
+    const d = document.createElement('div'); d.className = 'legitem';
+    d.innerHTML = `<div class="legpip" style="background:${s.color}"></div><span style="color:${s.color}">${s.label}</span>`;
+    el.appendChild(d);
+  });
+}
+
+// ─────────────────────────────────
+// SCHEDULE
+// ─────────────────────────────────
+function renderSchedule(){
+  const el = document.getElementById('scheduleEl'); el.innerHTML = '';
+  let lastWeek = null;
+
+  SCHEDULE.forEach((s, i) => {
+    const termMatch = activeWeek === 'all' || s.term === activeWeek || s.term === 'EX';
+    const subjMatch = activeSubj === 'all' || s.subj === activeSubj || s.subj === 'exam';
+
+    if(s.subj === 'exam' && activeSubj !== 'all') return; // hide exam rows when filtering by subject
+
+    if(!termMatch || !subjMatch) return;
+
+    if(s.week && s.week !== lastWeek){
+      lastWeek = s.week;
+      const wh = document.createElement('div'); wh.className = 'wheader';
+      wh.textContent = s.week;
+      el.appendChild(wh);
+    }
+
+    if(s.subj === 'exam'){
+      const row = document.createElement('div'); row.className = 'srow examrow';
+      row.textContent = s.date + ' — ' + s.task;
+      el.appendChild(row); return;
+    }
+
+    const subj = SUBJECTS.find(x => x.id === s.subj);
+    const isDone = completed.includes(i);
+
+    const row = document.createElement('div');
+    row.className = 'srow' + (isDone ? ' done' : '');
+    row.innerHTML = `
+      <span class="sdate">${s.date}</span>
+      <div class="spip" style="background:${subj ? subj.color : '#fff'}"></div>
+      <span class="stask">${subj ? subj.emoji : ''} ${s.task}</span>
+      <span class="sterm">${s.term}</span>
+      <span class="sxp">+${s.xp}xp</span>
+      ${isDone
+        ? '<span class="donetick">✓</span>'
+        : `<button class="donebtn" onclick="completeTask(${i})">Done ✓</button>`
+      }
+    `;
+    el.appendChild(row);
+  });
+
+  if(el.children.length === 0){
+    el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--dim);font-style:italic;">No tasks match this filter.</div>';
+  }
+}
+
+// ─────────────────────────────────
+// COMPLETE TASK
+// ─────────────────────────────────
+function completeTask(i){
+  if(completed.includes(i)) return;
+  completed.push(i); save(); updateAll();
+  const s = SCHEDULE[i];
+  const subj = SUBJECTS.find(x => x.id === s.subj);
+  showToast(`+${s.xp} XP!`, subj ? subj.emoji : '⭐', s.tip || 'Keep going — every task gets you closer!');
+}
+
+// ─────────────────────────────────
+// PLAYER STATUS
+// ─────────────────────────────────
+function updatePlayerStatus(){
+  const done = doneSessions(), total = nonExam.length, xp = totalXP();
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('barfill').style.width = pct + '%';
+  document.getElementById('bartext').textContent = `${done} / ${total}`;
+  document.getElementById('xpline').textContent = `XP: ${xp}  ·  ${pct}% of all tasks done`;
+  const lv = done === 0 ? 1 : done <= 5 ? 2 : done <= 12 ? 3 : done <= 20 ? 4 : done <= 30 ? 5 : 6;
+  document.getElementById('lvbadge').textContent = 'LV ' + lv;
+  document.getElementById('statDone').textContent = done;
+  document.getElementById('statXP').textContent = xp;
+  const subjsStarted = SUBJECTS.filter(s => SCHEDULE.some((t,i) => t.subj === s.id && completed.includes(i))).length;
+  document.getElementById('statSubjs').textContent = subjsStarted + ' / 7';
+}
+
+// ─────────────────────────────────
+// CHARACTERS
+// ─────────────────────────────────
+function isUnlocked(char){
+  const done = doneSessions();
+  if(typeof char.needed === 'number') return done >= char.needed;
+  const chk = (subj) => SCHEDULE.filter(s => s.subj === subj).length > 0 &&
+    SCHEDULE.filter((s,i) => s.subj === subj && !completed.includes(i)).length === 0;
+  if(char.needed === 'allMath') return chk('math');
+  if(char.needed === 'allEng') return chk('eng');
+  if(char.needed === 'allSci') return chk('sci');
+  if(char.needed === 'allT1'){
+    const t1 = SCHEDULE.map((s,i) => s.term === 'T1' ? i : null).filter(i => i !== null);
+    return t1.every(i => completed.includes(i));
+  }
+  return false;
+}
+function renderChars(){
+  const g = document.getElementById('chargrid'); g.innerHTML = '';
+  CHARACTERS.forEach(char => {
+    const u = isUnlocked(char);
+    const c = document.createElement('div'); c.className = 'charcard ' + (u ? 'unlocked' : 'locked');
+    c.innerHTML = `<span class="charemoji">${u ? char.emoji : '❓'}</span><span class="charname">${char.name}</span><span class="charreq">${u ? '✓ Unlocked!' : char.req}</span>`;
+    g.appendChild(c);
+  });
+}
+
+// ─────────────────────────────────
+// TIPS
+// ─────────────────────────────────
+function renderTips(){
+  const el = document.getElementById('tipsEl');
+  TIPS.forEach(t => {
+    const d = document.createElement('div'); d.className = 'tipitem';
+    d.innerHTML = `<div class="tipsubj">${t.subj}</div><div class="tiptext">${t.tip}</div>`;
+    el.appendChild(d);
+  });
+}
+
+// ─────────────────────────────────
+// TOAST
+// ─────────────────────────────────
+let toastTimer;
+function showToast(title, emoji, sub){
+  const toast = document.getElementById('toast');
+  document.getElementById('toemoji').textContent = emoji;
+  document.getElementById('totitle').textContent = title;
+  document.getElementById('tosub').textContent = sub;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 4500);
+}
+
+// ─────────────────────────────────
+// UPDATE ALL
+// ─────────────────────────────────
+function updateAll(){
+  updatePlayerStatus();
+  updateSubjBars();
+  renderSchedule();
+  renderChars();
+}
+
+// ─────────────────────────────────
+// EXPORT / IMPORT SAVE
+// ─────────────────────────────────
+function exportSave(){
+  const data = {
+    v: 1,
+    completed: completed,
+    xp: totalXP(),
+    exported: new Date().toLocaleDateString('en-GB')
+  };
+  const code = btoa(JSON.stringify(data));
+  navigator.clipboard.writeText(code).then(() => {
+    showSaveMsg('✓ Save code copied to clipboard! Paste it somewhere safe — Notes, an email to yourself, anywhere.', false);
+  }).catch(() => {
+    // Fallback: show the code in the textarea so they can copy manually
+    document.getElementById('importBox').value = code;
+    showSaveMsg('✓ Code shown in the box below — select it all and copy it (Ctrl+A, Ctrl+C).', false);
+  });
+}
+
+function importSave(){
+  const raw = document.getElementById('importBox').value.trim();
+  if(!raw){ showSaveMsg('✗ Paste your save code in the box first.', true); return; }
+  try {
+    const data = JSON.parse(atob(raw));
+    if(!data.completed || !Array.isArray(data.completed)) throw new Error('bad format');
+    completed = data.completed;
+    save();
+    updateAll();
+    document.getElementById('importBox').value = '';
+    showSaveMsg(`✓ Save restored! ${completed.length} tasks loaded from ${data.exported || 'backup'}.`, false);
+  } catch(e) {
+    showSaveMsg('✗ That code doesn\'t look right — make sure you copied the whole thing.', true);
+  }
+}
+
+function showSaveMsg(msg, isError){
+  const el = document.getElementById('saveMsg');
+  el.textContent = msg;
+  el.className = 'save-msg show' + (isError ? ' error' : '');
+  setTimeout(() => el.classList.remove('show'), 6000);
+}
+
+// ─────────────────────────────────
+// INIT
+// ─────────────────────────────────
+makeMotes();
+updateCountdown();
+buildTabs();
+buildSubjBars();
+buildLegend();
+buildFilters();
+renderTips();
+updateAll();
+
+if(completed.length === 0){
+  setTimeout(() => showToast('The show\'s starting! 🐱', '🎩', 'Work through every task to unlock the Lackadaisy gang and smash those KATs!'), 1200);
+}
+</script>
+
+</body>
+</html>
