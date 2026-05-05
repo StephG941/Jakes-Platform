@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -24,186 +23,186 @@
   --dim:      rgba(240,222,184,0.5);
   --ink:      #0e0a04;
 
-–math:  #4aa0d0;
-–eng:   #c85050;
-–sci:   #60a860;
-–geo:   #3a9898;
-–hist:  #c8782a;
-–comp:  #9060c0;
-–pe:    #c84870;
+  --math:  #4aa0d0;
+  --eng:   #c85050;
+  --sci:   #60a860;
+  --geo:   #3a9898;
+  --hist:  #c8782a;
+  --comp:  #9060c0;
+  --pe:    #c84870;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 
 body {
-background: var(–bg);
-color: var(–cream);
-font-family: ‘Lato’, sans-serif;
-font-weight: 400;
-min-height: 100vh;
-overflow-x: hidden;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Art deco diagonal pattern */
 body::before {
-content:’’;
-position:fixed;inset:0;pointer-events:none;
-background:
-repeating-linear-gradient(45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px),
-repeating-linear-gradient(-45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px);
-z-index:0;
+  content:'';
+  position:fixed;inset:0;pointer-events:none;
+  background:
+    repeating-linear-gradient(45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px),
+    repeating-linear-gradient(-45deg, transparent 0, transparent 18px, rgba(212,130,26,.04) 18px, rgba(212,130,26,.04) 19px);
+  z-index:0;
 }
 
 /* Vignette */
 body::after {
-content:’’;
-position:fixed;inset:0;pointer-events:none;
-background: radial-gradient(ellipse at center, transparent 40%, rgba(10,6,2,.7) 100%);
-z-index:1;
+  content:'';
+  position:fixed;inset:0;pointer-events:none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(10,6,2,.7) 100%);
+  z-index:1;
 }
 
 /* Floating dust motes */
 #motes{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
 .mote{
-position:absolute;
-border-radius:50%;
-background:rgba(232,176,64,.6);
-animation:mote-drift var(–dur,12s) var(–del,0s) ease-in-out infinite;
-opacity:0;
+  position:absolute;
+  border-radius:50%;
+  background:rgba(232,176,64,.6);
+  animation:mote-drift var(--dur,12s) var(--del,0s) ease-in-out infinite;
+  opacity:0;
 }
 @keyframes mote-drift{
-0%{transform:translate(0,0);opacity:0;}
-20%{opacity:.6;}
-80%{opacity:.3;}
-100%{transform:translate(var(–dx,20px), var(–dy,-80px));opacity:0;}
+  0%{transform:translate(0,0);opacity:0;}
+  20%{opacity:.6;}
+  80%{opacity:.3;}
+  100%{transform:translate(var(--dx,20px), var(--dy,-80px));opacity:0;}
 }
 
 .page{max-width:1060px;margin:0 auto;padding:0 16px 50px;position:relative;z-index:3;}
 
 /* ── HEADER ── */
 .header{
-text-align:center;
-padding:32px 0 20px;
-border-bottom:3px solid var(–border);
-margin-bottom:20px;
-position:relative;
+  text-align:center;
+  padding:32px 0 20px;
+  border-bottom:3px solid var(--border);
+  margin-bottom:20px;
+  position:relative;
 }
 .header-deco{
-display:flex;justify-content:center;align-items:center;gap:0;
-margin-bottom:12px;
-font-size:12px;color:var(–amber);letter-spacing:6px;
-font-family:‘Lato’,sans-serif;font-weight:900;
-text-transform:uppercase;
+  display:flex;justify-content:center;align-items:center;gap:0;
+  margin-bottom:12px;
+  font-size:12px;color:var(--amber);letter-spacing:6px;
+  font-family:'Lato',sans-serif;font-weight:900;
+  text-transform:uppercase;
 }
-.deco-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(–amber),transparent);max-width:180px;}
+.deco-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--amber),transparent);max-width:180px;}
 
 .title{
-font-family:‘Playfair Display’,serif;
-font-size:clamp(22px,5vw,46px);
-font-weight:900;
-color:var(–gold);
-text-shadow:0 2px 20px rgba(232,176,64,.3), 2px 2px 0 rgba(0,0,0,.6);
-letter-spacing:1px;
-line-height:1.1;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,5vw,46px);
+  font-weight:900;
+  color:var(--gold);
+  text-shadow:0 2px 20px rgba(232,176,64,.3), 2px 2px 0 rgba(0,0,0,.6);
+  letter-spacing:1px;
+  line-height:1.1;
 }
-.title-cat{font-size:clamp(14px,2.5vw,22px);display:block;color:var(–amber);font-style:italic;font-weight:700;margin-top:4px;}
+.title-cat{font-size:clamp(14px,2.5vw,22px);display:block;color:var(--amber);font-style:italic;font-weight:700;margin-top:4px;}
 .subtitle{
-font-size:11px;color:var(–dim);
-margin-top:8px;letter-spacing:3px;
-text-transform:uppercase;font-weight:700;
+  font-size:11px;color:var(--dim);
+  margin-top:8px;letter-spacing:3px;
+  text-transform:uppercase;font-weight:700;
 }
 .art-deco-border{
-display:flex;align-items:center;justify-content:center;gap:8px;
-margin-top:14px;
-color:var(–amber);font-size:16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:14px;
+  color:var(--amber);font-size:16px;
 }
-.adb-line{width:60px;height:2px;background:var(–amber);}
+.adb-line{width:60px;height:2px;background:var(--amber);}
 
 /* ── COUNTDOWN ── */
 .cdwrap{display:flex;justify-content:center;margin-bottom:18px;}
 .cdbox{
-background:var(–panel);
-border:2px solid var(–border-lit);
-padding:14px 40px;
-text-align:center;
-position:relative;
-box-shadow:0 4px 30px rgba(0,0,0,.5), inset 0 0 30px rgba(212,130,26,.05);
+  background:var(--panel);
+  border:2px solid var(--border-lit);
+  padding:14px 40px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 4px 30px rgba(0,0,0,.5), inset 0 0 30px rgba(212,130,26,.05);
 }
 .cdbox::before,.cdbox::after{
-content:‘◆’;position:absolute;color:var(–amber);font-size:12px;top:50%;transform:translateY(-50%);
+  content:'◆';position:absolute;color:var(--amber);font-size:12px;top:50%;transform:translateY(-50%);
 }
 .cdbox::before{left:10px;}
 .cdbox::after{right:10px;}
 .cdnum{
-display:block;
-font-family:‘Playfair Display’,serif;
-font-size:clamp(40px,8vw,64px);
-font-weight:900;
-color:var(–rust);
-text-shadow:2px 2px 0 rgba(0,0,0,.5);
-line-height:1;
-animation:pulse .9s ease-in-out infinite;
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(40px,8vw,64px);
+  font-weight:900;
+  color:var(--rust);
+  text-shadow:2px 2px 0 rgba(0,0,0,.5);
+  line-height:1;
+  animation:pulse .9s ease-in-out infinite;
 }
 @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
-.cdsub{font-size:10px;color:var(–dim);margin-top:6px;letter-spacing:1px;}
-.cdsub b{color:var(–gold);}
+.cdsub{font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:1px;}
+.cdsub b{color:var(--gold);}
 
 /* ── PLAYER BAR ── */
 .pbar{
-background:var(–panel);border:2px solid var(–border);
-padding:14px 16px;display:flex;align-items:center;gap:14px;
-margin-bottom:14px;flex-wrap:wrap;
-box-shadow:0 2px 20px rgba(0,0,0,.4);
+  background:var(--panel);border:2px solid var(--border);
+  padding:14px 16px;display:flex;align-items:center;gap:14px;
+  margin-bottom:14px;flex-wrap:wrap;
+  box-shadow:0 2px 20px rgba(0,0,0,.4);
 }
 .avatar{font-size:40px;animation:catbob 3s ease-in-out infinite;flex-shrink:0;}
 @keyframes catbob{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg) translateY(-3px);}}
 .pdetails{flex:1;min-width:180px;}
 .pname{
-font-family:‘Playfair Display’,serif;font-size:11px;
-color:var(–gold);margin-bottom:7px;letter-spacing:1px;font-weight:700;
+  font-family:'Playfair Display',serif;font-size:11px;
+  color:var(--gold);margin-bottom:7px;letter-spacing:1px;font-weight:700;
 }
 .barwrap{
-position:relative;height:18px;
-background:rgba(0,0,0,.4);
-border:2px solid var(–border-lit);
-overflow:hidden;
+  position:relative;height:18px;
+  background:rgba(0,0,0,.4);
+  border:2px solid var(--border-lit);
+  overflow:hidden;
 }
 .barfill{
-height:100%;
-background:linear-gradient(90deg,var(–rust),var(–amber));
-transition:width .7s ease;position:relative;
+  height:100%;
+  background:linear-gradient(90deg,var(--rust),var(--amber));
+  transition:width .7s ease;position:relative;
 }
-.barfill::after{content:’’;position:absolute;inset:2px 6px auto;height:4px;background:rgba(255,255,255,.15);}
-.bartext{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:8px;color:var(–cream);}
-.xpline{font-size:9px;color:var(–dim);margin-top:5px;}
+.barfill::after{content:'';position:absolute;inset:2px 6px auto;height:4px;background:rgba(255,255,255,.15);}
+.bartext{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:8px;color:var(--cream);}
+.xpline{font-size:9px;color:var(--dim);margin-top:5px;}
 .lvbadge{
-font-family:‘Playfair Display’,serif;font-size:13px;font-weight:900;
-background:linear-gradient(135deg,var(–rust),var(–amber));
-color:var(–ink);padding:8px 16px;flex-shrink:0;
-text-align:center;min-width:64px;letter-spacing:1px;
-box-shadow:0 2px 10px rgba(0,0,0,.4);
+  font-family:'Playfair Display',serif;font-size:13px;font-weight:900;
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  color:var(--ink);padding:8px 16px;flex-shrink:0;
+  text-align:center;min-width:64px;letter-spacing:1px;
+  box-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
 /* ── SUBJECT BARS ── */
 .sbjgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px;}
-.sbj{background:var(–panel);border:2px solid var(–border);padding:8px 10px;}
+.sbj{background:var(--panel);border:2px solid var(--border);padding:8px 10px;}
 .sbjlbl{font-size:8px;margin-bottom:5px;display:flex;justify-content:space-between;font-weight:700;}
-.sbjbar{height:8px;background:rgba(0,0,0,.4);border:1px solid var(–border);}
+.sbjbar{height:8px;background:rgba(0,0,0,.4);border:1px solid var(--border);}
 .sbjfill{height:100%;transition:width .6s ease;}
 
 /* ── TABS ── */
-.tablist{display:flex;gap:0;flex-wrap:wrap;border-bottom:2px solid var(–border-lit);}
+.tablist{display:flex;gap:0;flex-wrap:wrap;border-bottom:2px solid var(--border-lit);}
 .tabbtn{
-font-family:‘Lato’,sans-serif;font-weight:900;font-size:10px;
-background:var(–panel);border:2px solid var(–border);
-border-bottom:none;color:var(–dim);
-padding:9px 14px;cursor:pointer;transition:all .15s;
-position:relative;bottom:-2px;letter-spacing:1px;
-text-transform:uppercase;
+  font-family:'Lato',sans-serif;font-weight:900;font-size:10px;
+  background:var(--panel);border:2px solid var(--border);
+  border-bottom:none;color:var(--dim);
+  padding:9px 14px;cursor:pointer;transition:all .15s;
+  position:relative;bottom:-2px;letter-spacing:1px;
+  text-transform:uppercase;
 }
-.tabbtn:hover{color:var(–cream);border-color:var(–border-lit);}
-.tabbtn.active{color:var(–gold);border-color:var(–border-lit);border-bottom:2px solid var(–bg);background:var(–panel2);}
+.tabbtn:hover{color:var(--cream);border-color:var(--border-lit);}
+.tabbtn.active{color:var(--gold);border-color:var(--border-lit);border-bottom:2px solid var(--bg);background:var(--panel2);}
 .tabpanel{display:none;margin-top:14px;}
 .tabpanel.active{display:block;}
 
@@ -212,113 +211,113 @@ text-transform:uppercase;
 @media(max-width:700px){.mgrid{grid-template-columns:1fr;}}
 
 /* ── CARD ── */
-.card{background:var(–panel);border:2px solid var(–border);padding:16px;margin-bottom:14px;box-shadow:0 2px 20px rgba(0,0,0,.3);}
+.card{background:var(--panel);border:2px solid var(--border);padding:16px;margin-bottom:14px;box-shadow:0 2px 20px rgba(0,0,0,.3);}
 .ctitle{
-font-family:‘Playfair Display’,serif;font-size:17px;font-weight:700;
-margin-bottom:12px;display:flex;align-items:center;gap:8px;
-border-bottom:1px solid var(–border);padding-bottom:10px;color:var(–gold);
+  font-family:'Playfair Display',serif;font-size:17px;font-weight:700;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--border);padding-bottom:10px;color:var(--gold);
 }
 
 /* ── WEEK FILTER ── */
 .wk-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
 .wkbtn{
-font-family:‘Lato’,sans-serif;font-weight:700;font-size:9px;
-background:transparent;border:1px solid var(–border-lit);
-color:var(–dim);padding:4px 10px;cursor:pointer;
-transition:all .12s;text-transform:uppercase;letter-spacing:.5px;
+  font-family:'Lato',sans-serif;font-weight:700;font-size:9px;
+  background:transparent;border:1px solid var(--border-lit);
+  color:var(--dim);padding:4px 10px;cursor:pointer;
+  transition:all .12s;text-transform:uppercase;letter-spacing:.5px;
 }
-.wkbtn:hover,.wkbtn.active{background:var(–amber);color:var(–ink);border-color:var(–amber);}
+.wkbtn:hover,.wkbtn.active{background:var(--amber);color:var(--ink);border-color:var(--amber);}
 
 /* ── SUBJECT FILTER ── */
 .subj-filters{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
 .sfjbtn{
-font-family:‘Lato’,sans-serif;font-weight:700;font-size:8px;
-background:transparent;border:1px solid var(–border-lit);
-color:var(–dim);padding:3px 9px;cursor:pointer;
-transition:all .12s;letter-spacing:.5px;
-display:flex;align-items:center;gap:4px;
+  font-family:'Lato',sans-serif;font-weight:700;font-size:8px;
+  background:transparent;border:1px solid var(--border-lit);
+  color:var(--dim);padding:3px 9px;cursor:pointer;
+  transition:all .12s;letter-spacing:.5px;
+  display:flex;align-items:center;gap:4px;
 }
-.sfjbtn.active{color:var(–ink);}
+.sfjbtn.active{color:var(--ink);}
 
 /* ── SCHEDULE ── */
 .wheader{
-font-family:‘Playfair Display’,serif;font-style:italic;
-font-size:12px;color:var(–amber);
-padding:8px 0 4px;border-bottom:1px dashed var(–border);
-margin-bottom:4px;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:12px;color:var(--amber);
+  padding:8px 0 4px;border-bottom:1px dashed var(--border);
+  margin-bottom:4px;
 }
 .srow{
-display:flex;align-items:center;gap:9px;
-padding:9px 10px;margin-bottom:3px;
-border:1px solid var(–border);
-background:rgba(255,255,255,.01);
-cursor:default;transition:all .13s;position:relative;
+  display:flex;align-items:center;gap:9px;
+  padding:9px 10px;margin-bottom:3px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.01);
+  cursor:default;transition:all .13s;position:relative;
 }
-.srow:hover{border-color:var(–border-lit);background:rgba(212,130,26,.05);transform:translateX(2px);}
+.srow:hover{border-color:var(--border-lit);background:rgba(212,130,26,.05);transform:translateX(2px);}
 .srow.done{border-color:rgba(122,144,96,.5);background:rgba(122,144,96,.06);opacity:.7;}
-.srow.today{border-color:var(–gold);box-shadow:0 0 10px rgba(232,176,64,.25);}
+.srow.today{border-color:var(--gold);box-shadow:0 0 10px rgba(232,176,64,.25);}
 .srow.examrow{
-border-color:rgba(192,72,32,.5);background:rgba(192,72,32,.1);
-justify-content:center;text-align:center;font-size:11px;
-color:var(–rust);font-weight:700;
-animation:epulse 1.5s ease-in-out infinite;
+  border-color:rgba(192,72,32,.5);background:rgba(192,72,32,.1);
+  justify-content:center;text-align:center;font-size:11px;
+  color:var(--rust);font-weight:700;
+  animation:epulse 1.5s ease-in-out infinite;
 }
 @keyframes epulse{0%,100%{opacity:1;}50%{opacity:.65;}}
-.sdate{font-size:9px;color:var(–dim);min-width:90px;flex-shrink:0;font-weight:700;}
+.sdate{font-size:9px;color:var(--dim);min-width:90px;flex-shrink:0;font-weight:700;}
 .spip{width:10px;height:10px;flex-shrink:0;}
-.stask{font-size:10px;flex:1;line-height:1.5;color:var(–cream);}
-.sterm{font-size:8px;color:var(–dim);flex-shrink:0;font-style:italic;min-width:48px;text-align:right;}
-.sxp{font-family:‘Playfair Display’,serif;font-size:10px;color:var(–gold);flex-shrink:0;font-weight:700;}
+.stask{font-size:10px;flex:1;line-height:1.5;color:var(--cream);}
+.sterm{font-size:8px;color:var(--dim);flex-shrink:0;font-style:italic;min-width:48px;text-align:right;}
+.sxp{font-family:'Playfair Display',serif;font-size:10px;color:var(--gold);flex-shrink:0;font-weight:700;}
 .donebtn{
-font-family:‘Lato’,sans-serif;font-weight:900;font-size:9px;
-background:transparent;border:1px solid var(–sage);color:var(–sage);
-padding:4px 8px;cursor:pointer;flex-shrink:0;transition:all .12s;
-letter-spacing:.5px;text-transform:uppercase;
+  font-family:'Lato',sans-serif;font-weight:900;font-size:9px;
+  background:transparent;border:1px solid var(--sage);color:var(--sage);
+  padding:4px 8px;cursor:pointer;flex-shrink:0;transition:all .12s;
+  letter-spacing:.5px;text-transform:uppercase;
 }
-.donebtn:hover{background:var(–sage);color:var(–ink);}
-.donetick{font-size:14px;color:var(–sage);flex-shrink:0;}
+.donebtn:hover{background:var(--sage);color:var(--ink);}
+.donetick{font-size:14px;color:var(--sage);flex-shrink:0;}
 .hidden{display:none!important;}
 .sscroll{max-height:500px;overflow-y:auto;padding-right:4px;}
 .sscroll::-webkit-scrollbar{width:4px;}
-.sscroll::-webkit-scrollbar-thumb{background:var(–border-lit);}
+.sscroll::-webkit-scrollbar-thumb{background:var(--border-lit);}
 
 /* ── RIGHT PANEL ── */
 .bosslist{list-style:none;}
-.bosslist li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(–border);font-size:11px;color:var(–dim);}
+.bosslist li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--dim);}
 .bosslist li:last-child{border-bottom:none;}
 .bossicon{font-size:18px;flex-shrink:0;}
 
 /* ── CHARACTERS ── */
 .chargrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .charcard{
-border:1px solid var(–border);padding:10px 8px;text-align:center;
-transition:all .2s;
+  border:1px solid var(--border);padding:10px 8px;text-align:center;
+  transition:all .2s;
 }
 .charcard.unlocked{
-border-color:var(–gold);background:rgba(232,176,64,.06);
-box-shadow:0 0 14px rgba(232,176,64,.15);
+  border-color:var(--gold);background:rgba(232,176,64,.06);
+  box-shadow:0 0 14px rgba(232,176,64,.15);
 }
 .charcard.locked{opacity:.35;filter:grayscale(.8);}
 .charemoji{font-size:26px;display:block;margin-bottom:5px;}
 .charname{
-font-family:‘Playfair Display’,serif;font-size:11px;
-display:block;color:var(–gold);margin-bottom:3px;font-weight:700;
+  font-family:'Playfair Display',serif;font-size:11px;
+  display:block;color:var(--gold);margin-bottom:3px;font-weight:700;
 }
-.charreq{font-size:9px;color:var(–dim);line-height:1.4;}
-.charcard.unlocked .charreq{color:var(–sage);}
+.charreq{font-size:9px;color:var(--dim);line-height:1.4;}
+.charcard.unlocked .charreq{color:var(--sage);}
 
 /* ── TIPS ── */
 .tipitem{
-border:1px solid var(–border);border-left:4px solid var(–amber);
-padding:10px;margin-bottom:8px;
-background:rgba(255,255,255,.015);
+  border:1px solid var(--border);border-left:4px solid var(--amber);
+  padding:10px;margin-bottom:8px;
+  background:rgba(255,255,255,.015);
 }
 .tipsubj{
-font-family:‘Playfair Display’,serif;font-size:9px;
-color:var(–amber);margin-bottom:4px;letter-spacing:1px;
-font-weight:700;text-transform:uppercase;
+  font-family:'Playfair Display',serif;font-size:9px;
+  color:var(--amber);margin-bottom:4px;letter-spacing:1px;
+  font-weight:700;text-transform:uppercase;
 }
-.tiptext{font-size:11px;color:var(–cream);line-height:1.7;font-weight:400;}
+.tiptext{font-size:11px;color:var(--cream);line-height:1.7;font-weight:400;}
 
 /* ── LEGEND ── */
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
@@ -327,53 +326,201 @@ font-weight:700;text-transform:uppercase;
 
 /* ── PROGRESS STATS ── */
 .stats-card .stat-row{
-display:flex;justify-content:space-between;align-items:center;
-padding:5px 0;border-bottom:1px solid var(–border);font-size:10px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:5px 0;border-bottom:1px solid var(--border);font-size:10px;
 }
 .stats-card .stat-row:last-child{border-bottom:none;}
-.stat-num{font-family:‘Playfair Display’,serif;font-weight:700;color:var(–gold);font-size:14px;}
+.stat-num{font-family:'Playfair Display',serif;font-weight:700;color:var(--gold);font-size:14px;}
+
+/* ── STREAK BAR ── */
+.streak-bar{
+  background:var(--panel);border:2px solid var(--border);
+  padding:12px 16px;display:flex;align-items:center;gap:14px;
+  margin-bottom:14px;flex-wrap:wrap;
+}
+.streak-fire{font-size:32px;animation:fireburn 1s ease-in-out infinite;flex-shrink:0;}
+@keyframes fireburn{0%,100%{transform:scale(1) rotate(-3deg);}50%{transform:scale(1.1) rotate(3deg);}}
+.streak-info{flex:1;min-width:140px;}
+.streak-num{
+  font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,34px);
+  font-weight:900;color:var(--gold);line-height:1;
+}
+.streak-label{font-size:9px;color:var(--dim);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+.streak-mult{
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  color:var(--ink);padding:8px 14px;font-weight:900;font-size:12px;
+  text-align:center;flex-shrink:0;letter-spacing:1px;
+  font-family:'Playfair Display',serif;
+}
+.streak-days{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
+.streak-dot{
+  width:22px;height:22px;border-radius:50%;
+  border:2px solid var(--border-lit);background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;transition:all .3s;
+}
+.streak-dot.done{background:var(--amber);border-color:var(--amber);}
+.streak-dot.today{border-color:var(--gold);box-shadow:0 0 8px rgba(232,176,64,.5);}
+
+/* ── QUIZ ── */
+.quiz-wrap{max-width:680px;margin:0 auto;}
+.quiz-subj-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:10px;margin-bottom:20px;
+}
+.quiz-subj-btn{
+  font-family:'Lato',sans-serif;font-weight:900;font-size:11px;
+  background:var(--panel);border:2px solid var(--border);
+  color:var(--cream);padding:14px 10px;cursor:pointer;
+  transition:all .15s;text-align:center;letter-spacing:.5px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.quiz-subj-btn:hover{border-color:var(--border-lit);background:var(--panel2);}
+.quiz-subj-btn.selected{border-color:var(--gold);background:var(--panel2);color:var(--gold);}
+.quiz-subj-emoji{font-size:24px;}
+.quiz-subj-count{font-size:8px;color:var(--dim);font-weight:400;}
+
+.quiz-arena{display:none;}
+.quiz-arena.active{display:block;}
+
+.quiz-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:16px;flex-wrap:wrap;gap:8px;
+}
+.quiz-subj-label{font-size:11px;color:var(--gold);font-weight:900;letter-spacing:1px;text-transform:uppercase;}
+.quiz-score-row{display:flex;gap:12px;align-items:center;}
+.quiz-score{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;}
+.quiz-score.correct{color:var(--sage);}
+.quiz-score.wrong{color:var(--rust);}
+.quiz-mult-badge{
+  font-size:9px;background:var(--amber);color:var(--ink);
+  padding:3px 8px;font-weight:900;letter-spacing:.5px;
+}
+
+.quiz-progress-wrap{height:8px;background:rgba(0,0,0,.4);border:1px solid var(--border);margin-bottom:20px;}
+.quiz-progress-fill{height:100%;background:linear-gradient(90deg,var(--rust),var(--amber));transition:width .4s ease;}
+
+.quiz-q-card{
+  background:var(--panel2);border:2px solid var(--border-lit);
+  padding:24px 20px;margin-bottom:16px;
+  position:relative;overflow:hidden;
+}
+.quiz-q-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--rust),var(--amber),var(--gold));
+}
+.quiz-q-num{font-size:9px;color:var(--dim);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;}
+.quiz-q-text{
+  font-family:'Playfair Display',serif;font-size:clamp(14px,2.5vw,18px);
+  font-weight:700;color:var(--cream);line-height:1.5;
+}
+
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+@media(max-width:500px){.quiz-options{grid-template-columns:1fr;}}
+.quiz-opt{
+  font-family:'Lato',sans-serif;font-weight:700;font-size:12px;
+  background:var(--panel);border:2px solid var(--border);
+  color:var(--cream);padding:12px 14px;cursor:pointer;
+  transition:all .15s;text-align:left;line-height:1.4;
+  display:flex;align-items:flex-start;gap:8px;
+}
+.quiz-opt:hover:not(:disabled){border-color:var(--border-lit);background:var(--panel2);}
+.quiz-opt.correct{border-color:var(--sage)!important;background:rgba(122,144,96,.15)!important;color:var(--sage);}
+.quiz-opt.wrong{border-color:var(--rust)!important;background:rgba(192,72,32,.15)!important;color:var(--rust);}
+.quiz-opt:disabled{cursor:default;}
+.opt-letter{
+  font-family:'Playfair Display',serif;font-weight:900;font-size:14px;
+  color:var(--amber);flex-shrink:0;min-width:18px;
+}
+
+.quiz-feedback{
+  padding:12px 14px;margin-bottom:14px;border-left:4px solid var(--sage);
+  background:rgba(122,144,96,.1);display:none;font-size:11px;line-height:1.6;
+}
+.quiz-feedback.wrong{border-color:var(--rust);background:rgba(192,72,32,.1);}
+.quiz-feedback.show{display:block;}
+.feedback-title{font-weight:900;margin-bottom:4px;font-size:12px;}
+
+.quiz-next-btn{
+  width:100%;font-family:'Lato',sans-serif;font-weight:900;font-size:12px;
+  background:linear-gradient(135deg,var(--rust),var(--amber));
+  border:none;color:var(--ink);padding:14px;cursor:pointer;
+  letter-spacing:1px;text-transform:uppercase;transition:opacity .15s;
+  display:none;
+}
+.quiz-next-btn:hover{opacity:.85;}
+.quiz-next-btn.show{display:block;}
+
+.quiz-end{
+  text-align:center;padding:30px 20px;background:var(--panel2);
+  border:2px solid var(--border-lit);display:none;
+}
+.quiz-end.show{display:block;}
+.quiz-end-emoji{font-size:56px;display:block;margin-bottom:12px;}
+.quiz-end-title{
+  font-family:'Playfair Display',serif;font-size:clamp(20px,4vw,28px);
+  font-weight:900;color:var(--gold);margin-bottom:8px;
+}
+.quiz-end-score{font-size:13px;color:var(--cream);margin-bottom:6px;}
+.quiz-end-xp{
+  font-family:'Playfair Display',serif;font-size:20px;
+  color:var(--amber);font-weight:700;margin-bottom:16px;
+}
+.quiz-restart-btn{
+  font-family:'Lato',sans-serif;font-weight:900;font-size:11px;
+  background:transparent;border:2px solid var(--border-lit);color:var(--cream);
+  padding:10px 20px;cursor:pointer;margin:4px;letter-spacing:1px;
+  text-transform:uppercase;transition:all .15s;
+}
+.quiz-restart-btn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber);}
+.quiz-back-btn{
+  font-family:'Lato',sans-serif;font-weight:900;font-size:10px;
+  background:transparent;border:none;color:var(--dim);
+  padding:6px 0;cursor:pointer;letter-spacing:1px;
+  text-transform:uppercase;display:block;margin-bottom:14px;
+}
+.quiz-back-btn:hover{color:var(--cream);}
 
 /* ── SAVE / IMPORT ── */
 .savebtn{
-width:100%;font-family:‘Lato’,sans-serif;font-weight:900;font-size:10px;
-background:transparent;border:2px solid var(–border-lit);color:var(–cream);
-padding:8px 12px;cursor:pointer;transition:all .15s;
-text-transform:uppercase;letter-spacing:1px;
+  width:100%;font-family:'Lato',sans-serif;font-weight:900;font-size:10px;
+  background:transparent;border:2px solid var(--border-lit);color:var(--cream);
+  padding:8px 12px;cursor:pointer;transition:all .15s;
+  text-transform:uppercase;letter-spacing:1px;
 }
-.savebtn:hover{background:var(–amber);color:var(–ink);border-color:var(–amber);}
-.savebtn-import{margin-top:6px;border-color:var(–sage);color:var(–sage);}
-.savebtn-import:hover{background:var(–sage);color:var(–ink);border-color:var(–sage);}
+.savebtn:hover{background:var(--amber);color:var(--ink);border-color:var(--amber);}
+.savebtn-import{margin-top:6px;border-color:var(--sage);color:var(--sage);}
+.savebtn-import:hover{background:var(--sage);color:var(--ink);border-color:var(--sage);}
 .savebox{
-width:100%;background:rgba(0,0,0,.4);border:1px solid var(–border-lit);
-color:var(–cream);font-family:‘Lato’,sans-serif;font-size:9px;
-padding:8px;resize:vertical;min-height:56px;
-letter-spacing:.5px;line-height:1.5;
+  width:100%;background:rgba(0,0,0,.4);border:1px solid var(--border-lit);
+  color:var(--cream);font-family:'Lato',sans-serif;font-size:9px;
+  padding:8px;resize:vertical;min-height:56px;
+  letter-spacing:.5px;line-height:1.5;
 }
-.savebox::placeholder{color:var(–dim);}
+.savebox::placeholder{color:var(--dim);}
 .save-msg{
-font-size:9px;margin-top:8px;padding:6px 8px;
-display:none;border-left:3px solid var(–sage);
-color:var(–sage);background:rgba(122,144,96,.08);
-line-height:1.5;letter-spacing:.5px;
+  font-size:9px;margin-top:8px;padding:6px 8px;
+  display:none;border-left:3px solid var(--sage);
+  color:var(--sage);background:rgba(122,144,96,.08);
+  line-height:1.5;letter-spacing:.5px;
 }
-.save-msg.error{border-color:var(–rust);color:var(–rust);background:rgba(192,72,32,.08);}
+.save-msg.error{border-color:var(--rust);color:var(--rust);background:rgba(192,72,32,.08);}
 .save-msg.show{display:block;}
 
 /* ── TOAST ── */
 .toast{
-position:fixed;bottom:28px;left:50%;
-transform:translateX(-50%) translateY(130px);
-background:var(–panel2);border:2px solid var(–gold);
-padding:16px 28px;text-align:center;z-index:10000;
-transition:transform .35s cubic-bezier(.34,1.56,.64,1);
-max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(130px);
+  background:var(--panel2);border:2px solid var(--gold);
+  padding:16px 28px;text-align:center;z-index:10000;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
 }
 .toast.show{transform:translateX(-50%) translateY(0);}
 .toemoji{font-size:28px;display:block;margin-bottom:5px;}
-.totitle{font-family:‘Playfair Display’,serif;font-size:16px;font-weight:700;color:var(–gold);}
-.tosub{font-size:10px;color:var(–dim);margin-top:5px;line-height:1.6;}
+.totitle{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);}
+.tosub{font-size:10px;color:var(--dim);margin-top:5px;line-height:1.6;}
 </style>
-
 </head>
 <body>
 
@@ -382,7 +529,6 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
 <div class="page">
 
 <!-- HEADER -->
-
 <div class="header">
   <div class="header-deco">
     <div class="deco-line"></div>
@@ -402,7 +548,6 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
 </div>
 
 <!-- COUNTDOWN -->
-
 <div class="cdwrap">
   <div class="cdbox">
     <span class="cdnum" id="cdnum">--</span>
@@ -411,7 +556,6 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
 </div>
 
 <!-- PLAYER BAR -->
-
 <div class="pbar">
   <div class="avatar">🐱</div>
   <div class="pdetails">
@@ -426,15 +570,23 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
 </div>
 
 <!-- SUBJECT BARS -->
-
 <div class="sbjgrid" id="sbjgrid"></div>
 
-<!-- TABS -->
+<!-- STREAK BAR -->
+<div class="streak-bar" id="streakBar">
+  <div class="streak-fire">🔥</div>
+  <div class="streak-info">
+    <div class="streak-num" id="streakNum">0</div>
+    <div class="streak-label">Day Streak — quiz daily to keep it going!</div>
+    <div class="streak-days" id="streakDots"></div>
+  </div>
+  <div class="streak-mult" id="streakMult">×1 XP</div>
+</div>
 
+<!-- TABS -->
 <div class="tablist" id="tablist"></div>
 
 <!-- TAB: SCHEDULE -->
-
 <div class="tabpanel active" id="tp-schedule">
   <div class="mgrid">
     <div>
@@ -442,60 +594,56 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
         <div class="ctitle">📋 Quest Log — Full Year Revision</div>
         <div class="legend" id="legend"></div>
 
-```
-    <!-- Week filters -->
-    <div class="wk-filters" id="wkfilters"></div>
-    <!-- Subject filters -->
-    <div class="subj-filters" id="sfjfilters"></div>
+        <!-- Week filters -->
+        <div class="wk-filters" id="wkfilters"></div>
+        <!-- Subject filters -->
+        <div class="subj-filters" id="sfjfilters"></div>
 
-    <div class="sscroll" id="scheduleEl"></div>
-  </div>
-</div>
-<div>
-  <div class="card">
-    <div class="ctitle" style="color:var(--rust)">⚡ Boss Battles</div>
-    <ul class="bosslist">
-      <li><span class="bossicon">🔢</span><div><div style="color:var(--math);font-size:10px">Sun 18 May</div>Maths KAT</div></li>
-      <li><span class="bossicon">📖</span><div><div style="color:var(--eng);font-size:10px">Mon 19 May</div>English KAT</div></li>
-      <li><span class="bossicon">🔬</span><div><div style="color:var(--sci);font-size:10px">Tue 20 May</div>Science KAT</div></li>
-    </ul>
-  </div>
-
-  <div class="card stats-card">
-    <div class="ctitle">📊 Your Stats</div>
-    <div class="stat-row"><span>Tasks done</span><span class="stat-num" id="statDone">0</span></div>
-    <div class="stat-row"><span>Total XP</span><span class="stat-num" id="statXP">0</span></div>
-    <div class="stat-row"><span>Subjects started</span><span class="stat-num" id="statSubjs">0 / 7</span></div>
-    <div class="stat-row"><span>Days to go</span><span class="stat-num" id="statDays">--</span></div>
-  </div>
-
-  <div class="card">
-    <div class="ctitle" style="color:var(--sepia)">💾 Save Backup</div>
-    <p style="font-size:10px;color:var(--dim);margin-bottom:10px;line-height:1.6;">Export your progress as a save code. If you ever switch browser or device, paste it back in to restore everything.</p>
-
-    <button class="savebtn" onclick="exportSave()">📋 Copy Save Code</button>
-
-    <div style="margin-top:10px;">
-      <textarea id="importBox" class="savebox" placeholder="Paste save code here to restore progress..."></textarea>
-      <button class="savebtn savebtn-import" onclick="importSave()">⬆ Import Save</button>
+        <div class="sscroll" id="scheduleEl"></div>
+      </div>
     </div>
+    <div>
+      <div class="card">
+        <div class="ctitle" style="color:var(--rust)">⚡ Boss Battles</div>
+        <ul class="bosslist">
+          <li><span class="bossicon">🔢</span><div><div style="color:var(--math);font-size:10px">Sun 18 May</div>Maths KAT</div></li>
+          <li><span class="bossicon">📖</span><div><div style="color:var(--eng);font-size:10px">Mon 19 May</div>English KAT</div></li>
+          <li><span class="bossicon">🔬</span><div><div style="color:var(--sci);font-size:10px">Tue 20 May</div>Science KAT</div></li>
+        </ul>
+      </div>
 
-    <div id="saveMsg" class="save-msg"></div>
-  </div>
+      <div class="card stats-card">
+        <div class="ctitle">📊 Your Stats</div>
+        <div class="stat-row"><span>Tasks done</span><span class="stat-num" id="statDone">0</span></div>
+        <div class="stat-row"><span>Total XP</span><span class="stat-num" id="statXP">0</span></div>
+        <div class="stat-row"><span>Subjects started</span><span class="stat-num" id="statSubjs">0 / 7</span></div>
+        <div class="stat-row"><span>Days to go</span><span class="stat-num" id="statDays">--</span></div>
+      </div>
 
-  <div class="card">
-    <div class="ctitle" style="color:var(--gold)">🐾 Lackadaisy Crew</div>
-    <div style="font-size:10px;color:var(--dim);margin-bottom:10px;">Finish tasks to unlock the gang!</div>
-    <div class="chargrid" id="chargrid"></div>
-  </div>
-</div>
-```
+      <div class="card">
+        <div class="ctitle" style="color:var(--sepia)">💾 Save Backup</div>
+        <p style="font-size:10px;color:var(--dim);margin-bottom:10px;line-height:1.6;">Export your progress as a save code. If you ever switch browser or device, paste it back in to restore everything.</p>
 
+        <button class="savebtn" onclick="exportSave()">📋 Copy Save Code</button>
+
+        <div style="margin-top:10px;">
+          <textarea id="importBox" class="savebox" placeholder="Paste save code here to restore progress..."></textarea>
+          <button class="savebtn savebtn-import" onclick="importSave()">⬆ Import Save</button>
+        </div>
+
+        <div id="saveMsg" class="save-msg"></div>
+      </div>
+
+      <div class="card">
+        <div class="ctitle" style="color:var(--gold)">🐾 Lackadaisy Crew</div>
+        <div style="font-size:10px;color:var(--dim);margin-bottom:10px;">Finish tasks to unlock the gang!</div>
+        <div class="chargrid" id="chargrid"></div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- TAB: TIPS -->
-
 <div class="tabpanel" id="tp-tips">
   <div class="card">
     <div class="ctitle">💡 Study Tips — From the Speakeasy</div>
@@ -503,10 +651,67 @@ max-width:88vw;box-shadow:0 0 40px rgba(232,176,64,.3);
   </div>
 </div>
 
+<!-- TAB: QUIZ -->
+<div class="tabpanel" id="tp-quiz">
+  <div class="quiz-wrap">
+
+    <!-- Subject selector -->
+    <div id="quizSelector">
+      <div class="card" style="margin-bottom:14px;">
+        <div class="ctitle" style="color:var(--gold)">🎯 Daily Quiz — Pick a Subject</div>
+        <p style="font-size:11px;color:var(--dim);margin-bottom:14px;line-height:1.7;">10 questions, one at a time. Answer correctly to earn XP — your streak multiplier stacks the bonus. A new set every day!</p>
+        <div class="quiz-subj-grid" id="quizSubjGrid"></div>
+      </div>
+    </div>
+
+    <!-- Quiz arena -->
+    <div class="quiz-arena" id="quizArena">
+      <button class="quiz-back-btn" onclick="backToSubjects()">← Choose different subject</button>
+      <div class="quiz-header">
+        <span class="quiz-subj-label" id="quizSubjLabel"></span>
+        <div class="quiz-score-row">
+          <span class="quiz-score correct" id="quizCorrect">✓ 0</span>
+          <span class="quiz-score wrong" id="quizWrong">✗ 0</span>
+          <span class="quiz-mult-badge" id="quizMultBadge">×1 XP</span>
+        </div>
+      </div>
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-fill" id="quizProgressFill" style="width:0%"></div>
+      </div>
+
+      <!-- Question card -->
+      <div id="quizActive">
+        <div class="quiz-q-card">
+          <div class="quiz-q-num" id="quizQNum">Question 1 of 10</div>
+          <div class="quiz-q-text" id="quizQText"></div>
+        </div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback">
+          <div class="feedback-title" id="feedbackTitle"></div>
+          <div id="feedbackBody"></div>
+        </div>
+        <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">Next Question →</button>
+      </div>
+
+      <!-- End screen -->
+      <div class="quiz-end" id="quizEnd">
+        <span class="quiz-end-emoji" id="endEmoji">🎉</span>
+        <div class="quiz-end-title" id="endTitle">Round Complete!</div>
+        <div class="quiz-end-score" id="endScore"></div>
+        <div class="quiz-end-xp" id="endXP"></div>
+        <div>
+          <button class="quiz-restart-btn" onclick="restartQuiz()">Play Again</button>
+          <button class="quiz-restart-btn" onclick="backToSubjects()">Change Subject</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </div><!-- /page -->
 
 <!-- TOAST -->
-
 <div class="toast" id="toast">
   <span class="toemoji" id="toemoji">⭐</span>
   <div class="totitle" id="totitle">Nice work!</div>
@@ -815,7 +1020,7 @@ function updateCountdown(){
 // ─────────────────────────────────
 function buildTabs(){
   const list = document.getElementById('tablist');
-  [{id:'schedule', label:'📋 Schedule'}, {id:'tips', label:'💡 Tips'}].forEach((t, idx) => {
+  [{id:'schedule', label:'📋 Schedule'}, {id:'quiz', label:'🎯 Daily Quiz'}, {id:'tips', label:'💡 Tips'}].forEach((t, idx) => {
     const btn = document.createElement('button');
     btn.className = 'tabbtn' + (idx===0 ? ' active' : '');
     btn.textContent = t.label;
@@ -988,12 +1193,15 @@ function completeTask(i){
 // PLAYER STATUS
 // ─────────────────────────────────
 function updatePlayerStatus(){
-  const done = doneSessions(), total = nonExam.length, xp = totalXP();
+  const done = doneSessions(), total = nonExam.length;
+  const schedXP = totalXP();
+  const quizXP = parseInt(localStorage.getItem('ldkq_quizxp')||'0');
+  const xp = schedXP + quizXP;
   const pct = total ? Math.round(done/total*100) : 0;
   document.getElementById('barfill').style.width = pct + '%';
   document.getElementById('bartext').textContent = `${done} / ${total}`;
   document.getElementById('xpline').textContent = `XP: ${xp}  ·  ${pct}% of all tasks done`;
-  const lv = done === 0 ? 1 : done <= 5 ? 2 : done <= 12 ? 3 : done <= 20 ? 4 : done <= 30 ? 5 : 6;
+  const lv = xp === 0 ? 1 : xp <= 150 ? 2 : xp <= 400 ? 3 : xp <= 750 ? 4 : xp <= 1200 ? 5 : 6;
   document.getElementById('lvbadge').textContent = 'LV ' + lv;
   document.getElementById('statDone').textContent = done;
   document.getElementById('statXP').textContent = xp;
@@ -1062,6 +1270,7 @@ function updateAll(){
   updateSubjBars();
   renderSchedule();
   renderChars();
+  renderStreak();
 }
 
 // ─────────────────────────────────
@@ -1108,6 +1317,262 @@ function showSaveMsg(msg, isError){
 }
 
 // ─────────────────────────────────
+// STREAK SYSTEM
+// ─────────────────────────────────
+function todayKey(){ const d=new Date(); return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`; }
+function getStreak(){ return JSON.parse(localStorage.getItem('ldkq_streak')||'{"count":0,"lastDate":null,"history":[]}'); }
+function saveStreak(s){ localStorage.setItem('ldkq_streak', JSON.stringify(s)); }
+
+function recordQuizDay(){
+  const s = getStreak();
+  const today = todayKey();
+  if(s.lastDate === today) return;
+  const yd = new Date(); yd.setDate(yd.getDate()-1);
+  const yesterday = `${yd.getFullYear()}-${yd.getMonth()}-${yd.getDate()}`;
+  s.count = (s.lastDate === yesterday) ? s.count + 1 : 1;
+  s.lastDate = today;
+  s.history = s.history || [];
+  s.history.push(today);
+  if(s.history.length > 7) s.history = s.history.slice(-7);
+  saveStreak(s);
+  renderStreak();
+}
+
+function getMultiplier(){
+  const s = getStreak();
+  if(s.count >= 7) return 3;
+  if(s.count >= 4) return 2;
+  if(s.count >= 2) return 1.5;
+  return 1;
+}
+
+function renderStreak(){
+  const s = getStreak();
+  document.getElementById('streakNum').textContent = s.count;
+  const mult = getMultiplier();
+  document.getElementById('streakMult').textContent = `×${mult} XP`;
+  const qmb = document.getElementById('quizMultBadge');
+  if(qmb) qmb.textContent = `×${mult} XP`;
+  const dotsEl = document.getElementById('streakDots');
+  dotsEl.innerHTML = '';
+  const today = todayKey();
+  for(let i=6; i>=0; i--){
+    const d = new Date(); d.setDate(d.getDate()-i);
+    const key = `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+    const done = (s.history||[]).includes(key);
+    const isToday = key === today;
+    const dot = document.createElement('div');
+    dot.className = 'streak-dot'+(done?' done':'')+(isToday&&!done?' today':'');
+    dot.textContent = done ? '🔥' : '';
+    dotsEl.appendChild(dot);
+  }
+}
+
+// ─────────────────────────────────
+// QUIZ BANK — 10 questions per subject
+// ─────────────────────────────────
+const QUIZ_BANK = {
+  math:[
+    {q:'A recipe uses flour and sugar in the ratio 3:1. If you use 150g of flour, how much sugar do you need?', opts:['30g','50g','60g','75g'], ans:1, exp:'3:1 means for every 3 parts flour, 1 part sugar. 150 ÷ 3 = 50g.'},
+    {q:'What is the gradient of the line y = 4x − 7?', opts:['−7','4','7','−4'], ans:1, exp:'In y = mx + c, m is the gradient. Here m = 4.'},
+    {q:'Expand: 3(2x + 5)', opts:['6x + 5','5x + 8','6x + 15','2x + 15'], ans:2, exp:'Multiply everything inside by 3: 3×2x = 6x, 3×5 = 15. Answer: 6x + 15.'},
+    {q:'What is the nth term of the sequence: 5, 8, 11, 14, …?', opts:['3n + 2','3n + 5','n + 3','2n + 3'], ans:0, exp:'Difference is 3, so 3n + something. n=1: 3(1)+2 = 5 ✓. Answer: 3n + 2.'},
+    {q:'Simplify: x³ × x⁴', opts:['x⁷','x¹²','2x⁷','x³⁴'], ans:0, exp:'Multiplying same-base indices: add the powers. 3 + 4 = 7. Answer: x⁷.'},
+    {q:'What is 15% of 240?', opts:['24','30','36','48'], ans:2, exp:'10% of 240 = 24. 5% = 12. 15% = 24 + 12 = 36.'},
+    {q:'Write 0.000045 in standard form.', opts:['4.5 × 10⁻⁵','45 × 10⁻⁶','4.5 × 10⁵','0.45 × 10⁻⁴'], ans:0, exp:'Move decimal right until 1 ≤ A < 10: gives 4.5. Moved 5 places = 10⁻⁵. Answer: 4.5 × 10⁻⁵.'},
+    {q:'The interior angles of a triangle add up to…?', opts:['90°','180°','270°','360°'], ans:1, exp:'Angles in any triangle always sum to 180°. Know this cold.'},
+    {q:'What is the probability of rolling a 4 on a fair 6-sided die?', opts:['1/4','1/3','1/6','2/6'], ans:2, exp:'1 favourable outcome out of 6 possible. P = 1/6.'},
+    {q:'A scatter graph shows that as temperature rises, ice cream sales rise. This is…', opts:['Negative correlation','No correlation','Positive correlation','Direct causation'], ans:2, exp:'Both variables increase together = positive correlation. Note: correlation does not prove causation.'},
+  ],
+  eng:[
+    {q:'In Romeo and Juliet, "A plague on both your houses!" shows Mercutio…', opts:['Is loyal to Capulets','Blames both families for his death','Is afraid of dying','Forgives Romeo'], ans:1, exp:'Mercutio curses both families as he dies — he holds them equally responsible for the feud that killed him.'},
+    {q:'What technique is used in: "The stars smiled down on the sleeping city"?', opts:['Simile','Alliteration','Personification','Metaphor'], ans:2, exp:'Personification gives human qualities (smiling) to non-human things (stars). It makes writing vivid and emotional.'},
+    {q:'In Animal Farm, who does Napoleon represent?', opts:['Karl Marx','Leon Trotsky','Joseph Stalin','Vladimir Lenin'], ans:2, exp:'Napoleon = Stalin — a leader who corrupts a revolution and uses fear and propaganda to stay in power.'},
+    {q:'What does PEE stand for in essay writing?', opts:['Point, Explain, Evidence','Point, Evidence, Explain','Plan, Evidence, Evaluate','Paragraph, Example, Expand'], ans:1, exp:'PEE = Point (your argument), Evidence (quote/example), Explain (what it shows). Three parts, every time.'},
+    {q:'What is iambic pentameter?', opts:['A type of rhyme scheme','A 10-syllable line with alternating stress','A poem with no rhyme','A verse with 8 lines'], ans:1, exp:'10 syllables per line: da-DUM da-DUM da-DUM da-DUM da-DUM. Shakespeare breaks it when characters are distressed.'},
+    {q:'Sherlock Holmes reflects the values of which era?', opts:['Medieval','Elizabethan','Victorian','Romantic'], ans:2, exp:'Doyle wrote in the Victorian era — Holmes embodies its obsession with science, logic, empire and rationality.'},
+    {q:'What is the main message of Animal Farm?', opts:['Animals are smarter than humans','Revolutions always improve society','Power corrupts those who gain it','Democracy always fails'], ans:2, exp:'"All animals are equal, but some are more equal than others." Orwell shows how revolutions get corrupted by power.'},
+    {q:'Which character acts as a go-between for Romeo and Juliet?', opts:['Tybalt','Benvolio','The Nurse','Prince Escalus'], ans:2, exp:'The Nurse carries messages between Romeo and Juliet. She represents a maternal figure who ultimately fails Juliet.'},
+    {q:'What is rhetoric?', opts:['A type of poem','The art of persuasive speaking or writing','A narrative structure','A figure of speech'], ans:1, exp:'Rhetoric is language designed to persuade. It uses techniques like rule of three, rhetorical questions and anaphora.'},
+    {q:'"I came, I saw, I conquered" is an example of…', opts:['Simile','Metaphor','Rule of Three','Alliteration'], ans:2, exp:'Three parallel phrases = Rule of Three (tricolon). It creates rhythm and makes the statement feel complete and powerful.'},
+  ],
+  sci:[
+    {q:'What is the word equation for aerobic respiration?', opts:['Glucose + Water → CO₂ + Oxygen','Glucose + Oxygen → CO₂ + Water + Energy','CO₂ + Water → Glucose + Oxygen','Glucose → Lactic acid + Energy'], ans:1, exp:'Aerobic respiration: Glucose + Oxygen → Carbon dioxide + Water + Energy. Happens in the mitochondria.'},
+    {q:'In the Periodic Table, what does the GROUP number tell you?', opts:['Number of protons','Number of electron shells','Number of outer electrons','Atomic mass'], ans:2, exp:'Group number = electrons in the outermost shell. This determines the element\'s chemical properties.'},
+    {q:'What happens to wave speed entering a denser medium?', opts:['It speeds up','It slows down','It stays the same','It doubles'], ans:1, exp:'Waves slow down in denser media. This causes refraction — why light bends entering glass or water.'},
+    {q:'Which technique separates salt from water by heating?', opts:['Filtration','Chromatography','Evaporation','Magnetic separation'], ans:2, exp:'Evaporation removes water by heating, leaving salt behind. Distillation also works if you want to collect the water.'},
+    {q:'What is the formula for pressure?', opts:['P = Force × Area','P = Force ÷ Area','P = Mass × Acceleration','P = Work ÷ Time'], ans:1, exp:'Pressure = Force ÷ Area (Pascals). Bigger area = lower pressure — that\'s why sharp knives cut easily.'},
+    {q:'What is natural selection?', opts:['Humans choosing which animals breed','Organisms with useful traits surviving and reproducing','All organisms evolving equally','Random DNA changes only'], ans:1, exp:'Natural selection: traits that help survival are passed on. Over generations, populations change. Darwin called this evolution.'},
+    {q:'Which is a product of photosynthesis?', opts:['Carbon dioxide','Water','Glucose','Nitrogen'], ans:2, exp:'Photosynthesis: CO₂ + Water + Light → Glucose + Oxygen. Products are glucose (energy) and oxygen (released).'},
+    {q:'Iron is more reactive than copper. Iron placed in copper sulfate solution…', opts:['Nothing happens','Iron dissolves, copper appears','Copper dissolves, iron appears','Both dissolve'], ans:1, exp:'More reactive metals displace less reactive ones. Iron goes into solution; copper metal is deposited — displacement reaction.'},
+    {q:'In a series circuit, what is true about current?', opts:['It increases around the circuit','It decreases around the circuit','It is the same everywhere','It varies at each component'], ans:2, exp:'Only one path exists in series, so the same current flows everywhere. Voltage is shared between components.'},
+    {q:'What causes tectonic plates to move?', opts:['The moon\'s gravity','Convection currents in the mantle','Earth\'s rotation','Volcanic eruptions'], ans:1, exp:'Convection currents in the semi-molten mantle slowly drag tectonic plates — just a few centimetres per year.'},
+  ],
+  geo:[
+    {q:'What shape valley is formed in the upper course of a river?', opts:['U-shaped','Flat-bottomed','V-shaped','Circular'], ans:2, exp:'Fast-flowing upper-course water cuts downward, forming a steep, narrow V-shaped valley. U-shapes are formed by glaciers.'},
+    {q:'What is food security?', opts:['Food stored in a warehouse','Reliable access to enough nutritious food for all people','Keeping food free from contamination','Growing your own food'], ans:1, exp:'Food security = people can consistently access safe, nutritious food. Many countries face insecurity due to climate, conflict and poverty.'},
+    {q:'Which is a renewable energy source?', opts:['Coal','Natural gas','Nuclear','Wind'], ans:3, exp:'Wind is renewable — it won\'t run out and produces no direct emissions. Coal and gas are fossil fuels. Nuclear uses finite uranium.'},
+    {q:'What is the main human cause of climate change?', opts:['Deforestation only','Volcanic eruptions','Burning fossil fuels releasing greenhouse gases','Changes in Earth\'s orbit'], ans:2, exp:'Burning fossil fuels releases CO₂, enhancing the greenhouse effect and raising global temperatures.'},
+    {q:'How do meanders form in a river?', opts:['Erosion on the inside of bends','Deposition on the outside','Erosion outside, deposition inside','Vertical erosion only'], ans:2, exp:'Outside of bend = faster water = erosion. Inside = slower water = deposition. This makes bends more pronounced over time.'},
+    {q:'Why are polar regions so cold?', opts:['Furthest from the sun','Sunlight hits at a low angle, spreading energy over a wide area','No atmosphere','Permanent cloud cover'], ans:1, exp:'At the poles, the sun is low in the sky — its energy spreads over a large area, giving less energy per m².'},
+    {q:'What is the GERD and why is it controversial?', opts:['A river in Ethiopia; causes flooding','A dam on the Nile; reduces water flow for Egypt','A trade agreement affecting food prices','A volcano threatening Egypt'], ans:1, exp:'The Grand Ethiopian Renaissance Dam on the Blue Nile. Ethiopia gains hydroelectric power; Egypt fears reduced water downstream.'},
+    {q:'What does climate change refer to?', opts:['Day-to-day weather changes','Short-term temperature shifts','Long-term shifts in global temperature and weather patterns','Seasonal rainfall variation'], ans:2, exp:'Climate = long-term average weather. Climate change = shifts in these long-term patterns, mainly warming due to greenhouse gases.'},
+    {q:'Food insecurity in sub-Saharan Africa is mainly caused by…', opts:['Overpopulation alone','Drought, conflict, poverty and poor infrastructure combined','Too much food being exported','Industrial farming failures'], ans:1, exp:'Food insecurity is rarely one cause. Drought, conflict, poverty and poor infrastructure all combine in sub-Saharan Africa.'},
+    {q:'How do polar bears stay warm in Arctic conditions?', opts:['Thin fur to stay cool','Hollow transparent fur and thick blubber','Dark skin only','Nocturnal behaviour'], ans:1, exp:'Polar bear fur is hollow — it channels sunlight to black skin. They also have thick blubber for insulation.'},
+  ],
+  hist:[
+    {q:'Why did Britain build such a large empire in the 1800s?', opts:['Purely for military power','Access to raw materials, new markets, wealth and power','To spread Christianity only','Because of UK population growth'], ans:1, exp:'The British Empire was driven by economics — cheap raw materials (cotton, sugar, rubber) and new markets for manufactured goods.'},
+    {q:'In the triangle of trade, what came from Africa to the Americas?', opts:['Manufactured goods','Raw materials like sugar','Enslaved people','Money and gold'], ans:2, exp:'The triangle: manufactured goods (Britain→Africa), enslaved people (Africa→Americas), raw materials (Americas→Britain).'},
+    {q:'Which inventions were most important in starting the Industrial Revolution?', opts:['The printing press','The spinning jenny and steam engine','The combustion engine','The telegraph'], ans:1, exp:'Spinning jenny (Hargreaves) and steam engine (Watt) transformed manufacturing — moving work from homes to factories.'},
+    {q:'What were Industrial Revolution factory conditions like?', opts:['Safe, well-paid and regulated','Long hours, dangerous, low pay, including children','Better than farm work','Highly skilled and comfortable'], ans:1, exp:'12-16 hour days, dangerous machinery, low wages, no safety regulations. Children as young as 5 worked in mines and mills.'},
+    {q:'What does MAIN stand for as WW1 causes?', opts:['Military, Alliances, Industry, Nationalism','Militarism, Alliances, Imperialism, Nationalism','Military, Agreements, Imperialism, Nations','Militarism, Austria, Imperialism, Nationalism'], ans:1, exp:'MAIN: Militarism, Alliances, Imperialism, Nationalism. These long-term tensions existed before 1914.'},
+    {q:'What triggered World War One?', opts:['Germany invaded Belgium','Sinking of the Lusitania','Assassination of Archduke Franz Ferdinand','Russia mobilised its army'], ans:2, exp:'The assassination of Franz Ferdinand in Sarajevo (June 1914) triggered the alliance system, leading rapidly to war.'},
+    {q:'Why did the Western Front become a stalemate?', opts:['Soldiers refused to fight','Trenches made attacking suicidal against machine guns and artillery','There was a ceasefire','Weather prevented fighting'], ans:1, exp:'Machine guns and artillery made advancing troops extremely vulnerable. Neither side could advance without catastrophic losses.'},
+    {q:'Who campaigned for better conditions in Industrial Revolution Britain?', opts:['Lord Shaftesbury and the Chartists','Napoleon Bonaparte','Queen Victoria only','Factory owners'], ans:0, exp:'Lord Shaftesbury campaigned for limits on child labour. The Chartists campaigned for political reform for ordinary people.'},
+    {q:'What was the impact of the slave trade on West Africa?', opts:['Brought wealth and development','No significant impact','Depopulated regions and destabilised societies','Improved European trade links'], ans:2, exp:'Millions were forcibly removed, depopulating regions, destroying families and destabilising communities. Profits went to European traders.'},
+    {q:'Which best describes WW1 trench warfare?', opts:['Rapid advances across open ground','Regular cavalry charges','Long stalemate with brief costly offensives','Air power dominating'], ans:2, exp:'Soldiers lived in trenches for months. When offensives happened (like the Somme), gains were tiny but casualties enormous.'},
+  ],
+  comp:[
+    {q:'In binary, what is the value of 1010?', opts:['8','10','12','14'], ans:1, exp:'Binary 1010: positions right-to-left are 1,2,4,8. 0+2+0+8 = 10.'},
+    {q:'What does this Python print? x = 5; x = x + 3; print(x)', opts:['5','3','8','53'], ans:2, exp:'x starts as 5. x = 5+3 = 8. print(x) outputs 8. Variables store the current value.'},
+    {q:'What does HTML stand for?', opts:['Hyper Transfer Markup Language','HyperText Markup Language','High Text Machine Language','HyperText Making Links'], ans:1, exp:'HTML = HyperText Markup Language. The standard language for creating web page structure and content.'},
+    {q:'How many bytes in one kilobyte (KB)?', opts:['8','100','1000','1024'], ans:3, exp:'1 KB = 1024 bytes. 1 byte = 8 bits. Bit → byte → KB → MB → GB → TB.'},
+    {q:'What is a variable in programming?', opts:['A type of loop','A named storage location holding a value','A function that repeats code','A type of error'], ans:1, exp:'A variable is a named box that stores a value. e.g. score = 0. You can change its contents during the program.'},
+    {q:'What does CSS control in a website?', opts:['Logic and calculations','Structure and content','Visual styling — colours, fonts, layout','Database management'], ans:2, exp:'CSS controls how HTML looks. HTML = structure, CSS = style. They work together to build web pages.'},
+    {q:'What is an algorithm?', opts:['A programming language','A step-by-step set of instructions to solve a problem','A type of loop','A variable'], ans:1, exp:'An algorithm is precise, step-by-step instructions that solve a problem. Every program is built on algorithms.'},
+    {q:'In Python, what does "if" do?', opts:['Repeats code','Defines a function','Runs code only if a condition is true','Stores a value'], ans:2, exp:'"if" is selection — tests a condition and runs code only if True. With "else", it creates decision-making in programs.'},
+    {q:'What is an event in app development?', opts:['An error in code','Something that triggers a response — e.g. a button tap','A type of variable','A loop that runs once'], ans:1, exp:'An event is a user action (tap, swipe, type) or system detection. Event-driven programming makes apps respond to users.'},
+    {q:'What does ASCII do?', opts:['Compresses images','Maps letters and symbols to binary numbers so computers store text','Encrypts data','Controls screen resolution'], ans:1, exp:'ASCII assigns a binary number to each character. \'A\' = 65 = 01000001 in binary. It\'s how computers store text.'},
+  ],
+  pe:[
+    {q:'What is the "drive phase" in sprinting?', opts:['The finish line sprint','The explosive push-off start with low body angle','The deceleration at the end','The arm swing motion'], ans:1, exp:'Drive phase: low body angle, powerful leg drive into the ground. It accelerates the runner to top speed.'},
+    {q:'When would you use a drop shot in badminton?', opts:['To send opponent to the back','To land just over the net when opponent is at the back','To serve at the start','To defend a smash'], ans:1, exp:'A drop shot falls softly just over the net. Most effective when your opponent is at the back of the court.'},
+    {q:'In netball, which two players can shoot?', opts:['WA and WD','C and GK','GS and GA','GD and GK'], ans:2, exp:'Only Goal Shooter (GS) and Goal Attack (GA) can shoot — the only players allowed in the goal circle.'},
+    {q:'What is correct front crawl technique?', opts:['Head up, straight arm pull, scissor kick','Head neutral, alternating arm pull, flutter kick','Head up, butterfly arms, dolphin kick','Head to side, breaststroke kick'], ans:1, exp:'Front crawl: head neutral/down, alternating arms pulling through water, flutter kick. Turn head to breathe, don\'t lift it.'},
+    {q:'In rugby, which direction must the ball be passed?', opts:['Forward only','Sideways or backwards only','Any direction','Upward only'], ans:1, exp:'A fundamental rule: the ball must go sideways or backwards. Passing forward is an offence (knock-on).'},
+    {q:'What is the purpose of a warm-up?', opts:['To tire opponents','To increase heart rate, blood flow and reduce injury risk','To improve tactics','To practise skills only'], ans:1, exp:'A warm-up gradually increases heart rate and blood flow, raises body temperature and mobilises joints — reducing injury risk.'},
+    {q:'What is "rucking" in rugby?', opts:['Passing behind the back','Contesting for the ball on the ground with players on their feet','A type of lineout','A penalty kick'], ans:1, exp:'A ruck forms when the ball is on the ground and players contest for it on their feet. No hands allowed in the ruck.'},
+    {q:'Key difference between sprinting and middle distance running?', opts:['Sprinting uses arms, middle distance doesn\'t','Sprinting is max effort; middle distance requires pacing','No difference','Middle distance is always on a track'], ans:1, exp:'Sprinting = maximum effort throughout. Middle distance (800m/1500m) requires tactical pacing and a strong finish.'},
+    {q:'What characterises butterfly swimming stroke?', opts:['Alternating arms, flutter kick','Both arms simultaneously over water, dolphin kick','Alternating arms, breaststroke kick','Sidestroke, scissor kick'], ans:1, exp:'Butterfly: both arms sweep forward simultaneously over the water, combined with a dolphin kick (both legs together).'},
+    {q:'What does "officiating" mean in PE?', opts:['Coaching a team','Refereeing or umpiring — applying the rules','Designing training sessions','Recording scores'], ans:1, exp:'Officiating = acting as referee, umpire or judge. Understanding officials\' roles and rules is assessed in GCSE PE written papers.'},
+  ],
+};
+
+// ─────────────────────────────────
+// QUIZ ENGINE
+// ─────────────────────────────────
+let quizState = { subj:null, questions:[], current:0, correct:0, wrong:0, answered:false };
+
+function buildQuizSubjGrid(){
+  const grid = document.getElementById('quizSubjGrid');
+  grid.innerHTML = '';
+  SUBJECTS.forEach(s => {
+    const count = (QUIZ_BANK[s.id]||[]).length;
+    if(!count) return;
+    const btn = document.createElement('button');
+    btn.className = 'quiz-subj-btn';
+    btn.innerHTML = `<span class="quiz-subj-emoji">${s.emoji}</span>${s.label}<span class="quiz-subj-count">${count} questions</span>`;
+    btn.style.borderColor = s.color;
+    btn.onclick = () => startQuiz(s.id);
+    grid.appendChild(btn);
+  });
+}
+
+function startQuiz(subjId){
+  const subj = SUBJECTS.find(s => s.id === subjId);
+  const bank = QUIZ_BANK[subjId] || [];
+  const shuffled = [...bank].sort(() => Math.random() - 0.5).slice(0, 10);
+  quizState = { subj:subjId, questions:shuffled, current:0, correct:0, wrong:0, answered:false };
+  document.getElementById('quizSelector').style.display = 'none';
+  document.getElementById('quizArena').classList.add('active');
+  document.getElementById('quizEnd').classList.remove('show');
+  document.getElementById('quizActive').style.display = 'block';
+  document.getElementById('quizSubjLabel').textContent = `${subj.emoji} ${subj.label}`;
+  document.getElementById('quizSubjLabel').style.color = subj.color;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = quizState.questions[quizState.current];
+  const total = quizState.questions.length;
+  document.getElementById('quizQNum').textContent = `Question ${quizState.current+1} of ${total}`;
+  document.getElementById('quizQText').textContent = q.q;
+  document.getElementById('quizProgressFill').style.width = (quizState.current/total*100)+'%';
+  document.getElementById('quizCorrect').textContent = `✓ ${quizState.correct}`;
+  document.getElementById('quizWrong').textContent = `✗ ${quizState.wrong}`;
+  document.getElementById('quizMultBadge').textContent = `×${getMultiplier()} XP`;
+  const optsEl = document.getElementById('quizOptions');
+  optsEl.innerHTML = '';
+  ['A','B','C','D'].forEach((letter, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = `<span class="opt-letter">${letter}</span>${q.opts[i]}`;
+    btn.onclick = () => answerQuestion(i);
+    optsEl.appendChild(btn);
+  });
+  const fb = document.getElementById('quizFeedback');
+  fb.className = 'quiz-feedback';
+  document.getElementById('quizNextBtn').classList.remove('show');
+  quizState.answered = false;
+}
+
+function answerQuestion(chosen){
+  if(quizState.answered) return;
+  quizState.answered = true;
+  const q = quizState.questions[quizState.current];
+  const correct = chosen === q.ans;
+  document.querySelectorAll('.quiz-opt').forEach((btn, i) => {
+    btn.disabled = true;
+    if(i === q.ans) btn.classList.add('correct');
+    else if(i === chosen && !correct) btn.classList.add('wrong');
+  });
+  if(correct) quizState.correct++; else quizState.wrong++;
+  const fb = document.getElementById('quizFeedback');
+  fb.className = 'quiz-feedback show' + (correct ? '' : ' wrong');
+  document.getElementById('feedbackTitle').textContent = correct ? '✓ Correct!' : '✗ Not quite...';
+  document.getElementById('feedbackBody').textContent = q.exp;
+  const nextBtn = document.getElementById('quizNextBtn');
+  nextBtn.classList.add('show');
+  nextBtn.textContent = quizState.current + 1 < quizState.questions.length ? 'Next Question →' : 'See Results →';
+}
+
+function nextQuestion(){
+  quizState.current++;
+  if(quizState.current >= quizState.questions.length){ endQuiz(); return; }
+  renderQuestion();
+}
+
+function endQuiz(){
+  document.getElementById('quizActive').style.display = 'none';
+  document.getElementById('quizEnd').classList.add('show');
+  document.getElementById('quizProgressFill').style.width = '100%';
+  const correct = quizState.correct, total = quizState.questions.length;
+  const pct = Math.round(correct/total*100);
+  const mult = getMultiplier();
+  const xpEarned = Math.round(correct * 15 * mult);
+  let emoji, title;
+  if(pct>=90){emoji='🏆';title='Outstanding!';}
+  else if(pct>=70){emoji='🎉';title='Great work!';}
+  else if(pct>=50){emoji='👍';title='Good effort!';}
+  else{emoji='💪';title='Keep practising!';}
+  document.getElementById('endEmoji').textContent = emoji;
+  document.getElementById('endTitle').textContent = title;
+  document.getElementById('endScore').textContent = `${correct} / ${total} correct (${pct}%)`;
+  document.getElementById('endXP').textContent = `+${xpEarned} XP earned  (×${mult} streak multiplier)`;
+  const prev = parseInt(localStorage.getItem('ldkq_quizxp')||'0');
+  localStorage.setItem('ldkq_quizxp', prev + xpEarned);
+  recordQuizDay();
+  updatePlayerStatus();
+  showToast(`+${xpEarned} XP! ${emoji}`, '🎯', `${correct}/${total} correct — ${title}`);
+}
+
+function restartQuiz(){ startQuiz(quizState.subj); }
+function backToSubjects(){
+  document.getElementById('quizSelector').style.display = 'block';
+  document.getElementById('quizArena').classList.remove('active');
+}
+
+// ─────────────────────────────────
 // INIT
 // ─────────────────────────────────
 makeMotes();
@@ -1117,12 +1582,13 @@ buildSubjBars();
 buildLegend();
 buildFilters();
 renderTips();
+buildQuizSubjGrid();
+renderStreak();
 updateAll();
 
 if(completed.length === 0){
-  setTimeout(() => showToast('The show\'s starting! 🐱', '🎩', 'Work through every task to unlock the Lackadaisy gang and smash those KATs!'), 1200);
+  setTimeout(() => showToast('The show\'s starting! 🐱', '🎩', 'Work through tasks and do the daily quiz to build your streak and earn XP!'), 1200);
 }
 </script>
-
 </body>
 </html>
